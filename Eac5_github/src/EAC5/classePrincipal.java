@@ -24,7 +24,7 @@ public class classePrincipal {
         objecteMenu.metodeSeleccioGestio();
 
         
-        
+        //GITHUB FUNCIONAAAAA!!! jeje
         
         
         
