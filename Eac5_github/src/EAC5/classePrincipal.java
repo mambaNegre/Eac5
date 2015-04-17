@@ -7,6 +7,7 @@ import java.util.ArrayList;
  *
  * @author Bea, Roberto i Joan
  */
+//probando cambios!!
 public class classePrincipal {
 
     public ArrayList<ArrayList<String>> llista;
