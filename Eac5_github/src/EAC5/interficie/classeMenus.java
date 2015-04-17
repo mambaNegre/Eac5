@@ -49,9 +49,11 @@ public class classeMenus {
             case 1:
                 metodeGestioInscripcions();
                 break;
+            
             case 2:
                 metodeGestioQualificacions();
                 break;
+            
             case 3:
                 System.out.println("\n\tHAS FINALITZAT EL PROGRAMA.");
                 break;
@@ -63,7 +65,6 @@ public class classeMenus {
      *
      */
     public void metodeGestioInscripcions() {
-        classePrincipal objecte = new classePrincipal();
 
         int opcio;
 
@@ -107,6 +108,7 @@ public class classeMenus {
 
                 metodeSeleccioGestio();
                 break;
+            
             case 3:
             // Lleva a ListaConcursantes (en proceso)
 
@@ -115,6 +117,7 @@ public class classeMenus {
 
                 metodeSeleccioGestio();
                 break;
+            
             case 4:
                 metodeSeleccioGestio();
                 break;
@@ -128,7 +131,7 @@ public class classeMenus {
 
         int opcio;
 
-        System.out.println("Opcions disponibles per a la gestió del concurs y les qualificacions:"
+        System.out.println("\nOpcions disponibles per a la gestió del concurs y les qualificacions:"
                 + "\n" + objecteUtilitats.metodeRepetirChar("-", 69)
                 + "\n1 - Iniciar el concurs"
                 + "\n2 - Puntuar ronda"
@@ -162,7 +165,7 @@ public class classeMenus {
 
         int opcio;
 
-        System.out.println("Modificació de dades dels concursants:"
+        System.out.println("\nModificació de dades dels concursants:"
                 + "\n" + objecteUtilitats.metodeRepetirChar("-", 38)
                 + "\n1 - Nom"
                 + "\n2 - Cognoms"
@@ -196,7 +199,7 @@ public class classeMenus {
 
         int opcio;
 
-        System.out.println("Tipos de llistes de concursants:"
+        System.out.println("\nTipos de llistes de concursants:"
                 + "\n" + objecteUtilitats.metodeRepetirChar("-", 32)
                 + "\n1 - Llista de localització"
                 + "\n2 - Llista per publicar a Twitter"
@@ -224,7 +227,7 @@ public class classeMenus {
 
         int opcio;
 
-        System.out.println("Tipus de llistas de qualificacions:"
+        System.out.println("\nTipus de llistas de qualificacions:"
                 + "\n" + objecteUtilitats.metodeRepetirChar("-", 35)
                 + "\n1 - Llista d'eliminats"
                 + "\n2 - Llista de concursants actius"
