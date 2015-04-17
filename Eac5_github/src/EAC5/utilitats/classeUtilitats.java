@@ -70,7 +70,8 @@ public class classeUtilitats {
             for (int i = 0; i < 8; i++) {
                 // Si als primers 8 caràcters no hi ha un número, no és un DNI vàlid
                 if (dni.charAt(i) < '0' || dni.charAt(i) > '9') {
-                    System.out.print("El DNI no és vàlid. ");
+                    System.out.println("\n\tEl DNI no és vàlid. ");
+                    System.out.println();
                     valor = false;
                     return valor;
                 } // Si el caràcter comprovat és un número, es desa a la variable valorNumeric
@@ -85,14 +86,16 @@ public class classeUtilitats {
 
             // Si tant el número com la lletra introduïts són correctes, retornar true
             if (LLETRES_VALIDES_DNI.charAt(numero % 23) == lletra) {
-                System.out.print("\n\tEl DNI és vàlid");
+                System.out.println("\n\tEl DNI és vàlid");
                 valor = true;
                 return valor;
+            }else{
+                System.out.println("\n\tEl DNI NO és vàlid");
             }
 
         } else {
             // Si el DNI no té 9 caràcters no és vàlid
-            System.out.print("El DNI ha de tenir 9 caràcters. ");
+            System.out.println("\n\tEl DNI ha de tenir 9 caràcters. ");
             valor = false;
             return valor;
         }

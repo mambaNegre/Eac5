@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class classePrincipal {
 
-    public ArrayList<ArrayList<String>> llista;
-
+    public static ArrayList<ArrayList<String>> llista;
+    
     /**
      * @param args the command line arguments
      */
@@ -18,14 +18,12 @@ public class classePrincipal {
 
         //INSTÀNCIES (OBJECTES)
         classeMenus objecteMenu = new classeMenus();
-
+        
         //INVOCACIÓ MÈTODES
         objecteMenu.metodeMisatgeBenvinguda();
         objecteMenu.metodeSeleccioGestio();
-
         
         
-       
         
         
         

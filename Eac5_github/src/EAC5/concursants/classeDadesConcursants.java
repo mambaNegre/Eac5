@@ -10,29 +10,26 @@ public class classeDadesConcursants {
 
     classeUtilitats objecte = new classeUtilitats();
 
-    
     /**
      * Mètode per escriure el dni i comprovar-lo
      *
      * @return dni
      */
     public String metodeEscriureDni() {
-
-        String valor = null;
+        String DNI;
         boolean cert = false;
 
         //classeUtilitats objecte = new classeUtilitats();
         do {
 
-            String DNI = objecte.metodeEscriureString("\nEscriu el DNI: ");
+            DNI = objecte.metodeEscriureString("\nEscriu el DNI: ");
             cert = objecte.metodeVerificarDNI(DNI);
 
         } while (!cert);
 
-        return valor;
+        return DNI;
     }
 
-    
     /**
      * Mètode per escriure nom
      *
@@ -53,7 +50,6 @@ public class classeDadesConcursants {
 
     }
 
-    
     /**
      * Mètode per escriure cognoms
      *
@@ -73,24 +69,23 @@ public class classeDadesConcursants {
         return cognoms;
     }
 
-    
     /**
      * Mètode per escriure els telèfon i comprovar-lo
      *
      * @return telefon
      */
     public String metodeEscriureTelefon() {
-        String valor = null;
+        String telefon;
         boolean cert = false;
 
         do {
 
-            String numTelefon = objecte.metodeEscriureString("\nEscriu el TELÈFON: ");
-            cert = objecte.metodeVerificarTelefon(numTelefon);
+            telefon = objecte.metodeEscriureString("\nEscriu el TELÈFON: ");
+            cert = objecte.metodeVerificarTelefon(telefon);
 
         } while (!cert);
 
-        return valor;
+        return telefon;
 
     }
 

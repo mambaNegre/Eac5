@@ -14,6 +14,8 @@ public class classeMenus {
     classeUtilitats objecteUtilitats = new classeUtilitats();
     classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
 
+    ArrayList<ArrayList<String>> llista;
+
     /**
      *
      */
@@ -22,7 +24,8 @@ public class classeMenus {
         System.out.println("Benvingut al programa per gestionar concursants"
                 + " del programa de radio 'NOMBRE'");
         System.out.println(objecteUtilitats.metodeRepetirChar("=", 80));
-        System.out.println("");
+        System.out.println(objecteUtilitats.metodeRepetirChar("=", 80));
+        
 
     }
 
@@ -33,18 +36,26 @@ public class classeMenus {
 
         int opcio;
 
-        System.out.println("Opcions de gestió del concurs:"
+        System.out.println("\nOpcions de gestió del concurs:"
                 + "\n" + objecteUtilitats.metodeRepetirChar("-", 30)
                 + "\n1 - Inscripció i gestió dels concursants"
-                + "\n2 - Gestió de qualificacions");
+                + "\n2 - Gestió de qualificacions"
+                + "\n3 - Sortir del Programa");
 
-        opcio = objecteUtilitats.metodeTriarOpcio("\nSeleccioneu l'opció desitjada: ", 1, 2);
+        opcio = objecteUtilitats.metodeTriarOpcio("\nSeleccioneu l'opció desitjada: ", 1, 3);
 
         switch (opcio) {
+
             case 1:
                 metodeGestioInscripcions();
+                break;
             case 2:
                 metodeGestioQualificacions();
+                break;
+            case 3:
+                System.out.println("\n\tHAS FINALITZAT EL PROGRAMA.");
+                break;
+
         }
     }
 
@@ -53,13 +64,12 @@ public class classeMenus {
      */
     public void metodeGestioInscripcions() {
         classePrincipal objecte = new classePrincipal();
-        ArrayList<ArrayList<String>> llista = objecte.llista;
 
         int opcio;
 
         System.out.println("\nOpcions disponibles per a la gestió de concursants:"
                 + "\n" + objecteUtilitats.metodeRepetirChar("-", 51)
-                + "\n1 - Inscripció de nous concursants"
+                + "\n1 - Inscripció de concursants"
                 + "\n2 - Modificació de dades dels concursants"
                 + "\n3 - Llistes de concursants"
                 + "\n4 - Torna al menu anterior");
@@ -67,20 +77,22 @@ public class classeMenus {
         opcio = objecteUtilitats.metodeTriarOpcio("\nSeleccioneu l'opció desitjada: ", 1, 4);
 
         switch (opcio) {
+
             case 1:
-            // Lleva a InsNuevosConcursantes (en proceso)
+                // Lleva a InsNuevosConcursantes (en proceso)
 
                 //Creem llista dels concursants.
                 llista = objecteLlista.metodeEscriureLlista();
 
                 //Comprovar la llista per si hi ha DNIs repetits.
                 objecteLlista.metodeSiDniEstaRepetit(llista);
-                
+
                 //Ordenar la llista pel DNI
                 llista = objecteLlista.metodeOrdenarLlista(llista);
-                
-                //Guardar la llista dins la llista Final
-                llista = objecteLlista.metodeGuardarLlista(llista);
+
+                metodeSeleccioGestio();
+                break;
+
             case 2:
             // Lleva a ModConcursantes (en proceso)
 
@@ -89,16 +101,23 @@ public class classeMenus {
 
                 //Ordenar la llista pel DNI
                 llista = objecteLlista.metodeOrdenarLlista(llista);
-                
+
                 //Guardar la llista ordenada dins la llista Final
                 llista = objecteLlista.metodeGuardarLlista(llista);
+
+                metodeSeleccioGestio();
+                break;
             case 3:
             // Lleva a ListaConcursantes (en proceso)
 
                 //Mostrar la llista.
                 objecteLlista.metodeMostrarLlista(llista, "LLISTA DE CONCURSANTS");
+
+                metodeSeleccioGestio();
+                break;
             case 4:
                 metodeSeleccioGestio();
+                break;
         }
     }
 
