@@ -10,6 +10,7 @@ public class classeUtilitats {
      * @return
      */
     public String metodeEscriureString(String cadena) {
+        //Roberto => esto es una prueba
         String valor;
 
         Scanner S = new Scanner(System.in);
