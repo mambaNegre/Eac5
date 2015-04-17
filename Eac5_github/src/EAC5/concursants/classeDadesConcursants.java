@@ -16,6 +16,7 @@ public class classeDadesConcursants {
      * @return dni
      */
     public String metodeEscriureDni() {
+        
         String DNI;
         boolean cert = false;
 
@@ -36,9 +37,10 @@ public class classeDadesConcursants {
      * @return nom
      */
     public String metodeEscriureNom() {
-        boolean cert = false;
-        String nom;
 
+        String nom;
+        boolean cert = false;
+        
         do {
 
             nom = objecte.metodeEscriureString("\nEscriu el NOM: ");
@@ -56,8 +58,9 @@ public class classeDadesConcursants {
      * @return cognoms
      */
     public String metodeEscriureCognoms() {
-        boolean cert = false;
+
         String cognoms;
+        boolean cert = false;
 
         do {
 
@@ -75,6 +78,7 @@ public class classeDadesConcursants {
      * @return telefon
      */
     public String metodeEscriureTelefon() {
+
         String telefon;
         boolean cert = false;
 
