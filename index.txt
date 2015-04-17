@@ -1,0 +1,36 @@
+- EAC5
+  - ClassePrincipal.java
+    - main
+    - inici
+- EAC5.interficie
+  - demanarDades.java
+    - demanarString
+    verificarDNI
+    verificarNomCognoms
+    verificarTelefon
+  - menu.java
+    - triarOpcio
+    - imprimirMenu
+- EAC5.jugadors
+  - classeDadesJugadors.java
+    - metodeEscriureString
+    - metodeEscriureDni
+    - metodeEscriureNom
+    - metodeEscriureCognom
+    - metodeEscriureTelefon
+  - classeLlistaJugadors.java
+    - metodeEscriureLlista
+    - metodeSiDniEstaALaLlista
+    - metodeModificarLlista
+    - metodeOrdenarLlista
+    - metodeMostrarLlista
+    - metodeGuardarLlista
+- EAC5.utilitats
+  - UtilitatsString.java
+    - repetirChar
+    - formatCadena
+  - validacions.java
+    - verificarDNI
+    - DNIEsUnic
+    - verificarTelefon
+    - verificarNoBuit
