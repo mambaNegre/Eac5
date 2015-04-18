@@ -43,7 +43,7 @@ public class UtilitatsMenu {
      * @param opcions És un array que conté les opcions disponibles del menú.
      * @return El valor enter corresponent a l'opció triada per l'usuari.
      */
-    public int imprimirMenu(String titol, String[] opcions) {
+    public static int imprimirMenu(String titol, String[] opcions) {
         UtilitatsString.repetirChar("#", 25);
         System.out.println(titol);
         UtilitatsString.repetirChar("#", 25);
