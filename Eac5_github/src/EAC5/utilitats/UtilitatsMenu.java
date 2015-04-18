@@ -50,7 +50,7 @@ public class UtilitatsMenu {
         for (int i=0; i<opcions.length; i++) {
             System.out.println((i+1) + ") " + opcions[i]);
         }
-        int opcio = triarOpcio("Tria una opció: ", 1, opcions.length);
+        int opcio = triarOpcio("\nTria una opció: ", 1, opcions.length);
         return opcio;
     }
 }

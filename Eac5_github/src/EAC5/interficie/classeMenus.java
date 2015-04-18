@@ -4,6 +4,7 @@ package EAC5.interficie;
 import EAC5.utilitats.*;
 import java.util.ArrayList;
 import EAC5.concursants.*;
+import EAC5.interficie.Pantallas;
 
 /**
  *
@@ -14,8 +15,10 @@ public class classeMenus {
 
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
+    Pantallas pantalla = new Pantallas();
+    GestioQualificacions gestionQualif = new GestioQualificacions();
     classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
-
+    
     ArrayList<ArrayList<String>> llista;
 
     /**
@@ -26,7 +29,7 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "Menu de Selecció de Gestions "
+        String titolMenu = "\nMenu de Selecció de Gestions "
                 + "\nOpcions de gestió del concurs:"
                 + "\n" + utilitatsString.repetirChar("-", 30);
 
@@ -61,7 +64,7 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "Menu de Gestions de Inscripcios"
+        String titolMenu = "\nMenu de Gestions de Inscripcios"
                 + "\nOpcions disponibles per a la gestió de concursants:"
                 + "\n" + utilitatsString.repetirChar("-", 51);
 
@@ -74,46 +77,33 @@ public class classeMenus {
         switch (opcio) {
 
             case 1:
-                // Lleva a InsNuevosConcursantes (en proceso)
-
-                //Creem llista dels concursants.
-                llista = objecteLlista.metodeEscriureLlista();
-
-                //Comprovar la llista per si hi ha DNIs repetits.
-                objecteLlista.metodeSiDniEstaRepetit(llista);
-
-                //Ordenar la llista pel DNI
-                llista = objecteLlista.metodeOrdenarLlista(llista);
-
+                
+                pantalla.inscripcioConcursants();
+                
                 metodeSeleccioGestio();
+                
                 break;
 
             case 2:
-            // Lleva a ModConcursantes (en proceso)
-
-                //Modificar dada/es i guardar els canvis en una nova llista.
-                llista = objecteLlista.metodeModificarLlista(llista);
-
-                //Ordenar la llista pel DNI
-                llista = objecteLlista.metodeOrdenarLlista(llista);
-
-                //Guardar la llista ordenada dins la llista Final
-                llista = objecteLlista.metodeGuardarLlista(llista);
+            
+                pantalla.modificacioConcursants();
 
                 metodeSeleccioGestio();
+                
                 break;
             
             case 3:
-            // Lleva a ListaConcursantes (en proceso)
 
                 //Mostrar la llista.
                 objecteLlista.metodeMostrarLlista(llista, "LLISTA DE CONCURSANTS");
 
                 metodeSeleccioGestio();
+                
                 break;
             
             case 4:
                 metodeSeleccioGestio();
+                
                 break;
         }
     }
@@ -125,11 +115,11 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "Menu de Gestions de Qualificacions"
+        String titolMenu = "\nMenu de Gestions de Qualificacions"
                 + "\nOpcions disponibles per a la gestió del concurs y les qualificacions:"
                 + "\n" + utilitatsString.repetirChar("-", 69);
 
-        String[] opcions = new String[] {"Iniciar el concurs", "Puntuar ronda",
+        String[] opcions = new String[] {"\nIniciar el concurs", "Puntuar ronda",
             "Mostrar llista de qualificacions de la ronda","Finalitzar ronda",
             "Mostrar llistas de qualificacions per Twitter","Torna al menu anterior"};
 
@@ -137,7 +127,7 @@ public class classeMenus {
 
         switch (opcio) {
             case 1:
-            // Lleva a IniciarConcurso
+            // Lleva a iniciarConcurso
             case 2:
             // Lleva a PuntuarRonda
             case 3:
@@ -145,9 +135,15 @@ public class classeMenus {
             case 4:
             // Lleva a FinalRonda
             case 5:
+                
                 metodeLlistaQualifTwitter();
+                
+                break;
             case 6:
+                
                 metodeSeleccioGestio();
+                
+                break;
         }
     }
 
@@ -158,7 +154,7 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "Menu de Opcions de Modificacio de Concursants"
+        String titolMenu = "\nMenu de Opcions de Modificacio de Concursants"
                 + "\nModificació de dades dels concursants:"
                 + "\n" + utilitatsString.repetirChar("-", 38);
 
@@ -178,9 +174,16 @@ public class classeMenus {
             case 4:
             // Lleva a ModConcursantes
             case 5:
+                
                 metodeGestioInscripcions();
+                
+                break;
+                
             case 6:
+                
                 metodeSeleccioGestio();
+                
+                break;
         }
     }
 
@@ -191,7 +194,7 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "Menu de Seleció de Llistes de Concursants"
+        String titolMenu = "\nMenu de Seleció de Llistes de Concursants"
                 + "\nTipos de llistes de concursants:"
                 + "\n" + utilitatsString.repetirChar("-", 32);
 
@@ -207,9 +210,16 @@ public class classeMenus {
             case 2:
             // Lleva a ListaConcurTwitter
             case 3:
+                
                 metodeGestioInscripcions();
+                
+                break;
+                
             case 4:
+                
                 metodeSeleccioGestio();
+                
+                break;
         }
     }
 
@@ -220,7 +230,7 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "Menu de Seleció de Llistes de Qualificacions per Twitter"
+        String titolMenu = "\nMenu de Seleció de Llistes de Qualificacions per Twitter"
                 + "\nTipus de llistas de qualificacions:"
                 + "\n" + utilitatsString.repetirChar("-", 35);
 
@@ -236,9 +246,16 @@ public class classeMenus {
             case 2:
             // Lleva a ListaCualifTwActiv
             case 3:
+                
                 metodeGestioInscripcions();
+                
+                break;
+                
             case 4:
+                
                 metodeSeleccioGestio();
+                
+                break;
         }
     }
 }
