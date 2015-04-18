@@ -75,16 +75,16 @@ public class GestioQualificacions {
      * 
      * @param concursants
      * @param puntsConcursants
-     * @param limitRondaActual
+     * @param zonaEliminats
      * @return 
      */
-    public int[] puntuarRonda(ArrayList<ArrayList<String>> concursants, int[] puntsConcursants, int limitRondaActual) {
+    public int[] puntuarRonda(ArrayList<ArrayList<String>> concursants, int[] puntsConcursants, int zonaEliminats) {
         String str = "Introduex puntuació (0-3) per ";
         int punts;
         //Fer un recorregut per tots el participants que encara no han estat
         //eliminats
         
-        for (int i=0; i<concursants.size()-limitRondaActual; i++) {
+        for (int i=0; i<concursants.size()-zonaEliminats; i++) {
             str += concursants.get(puntsConcursants[i]).get(NOM) + concursants.get(i).get(COGNOMS) + ": ";
             punts = UtilitatsMenu.triarOpcio(str, 0, 3);            
             //Acumular els punts per a cada participant amb el valor aleatori
@@ -93,22 +93,41 @@ public class GestioQualificacions {
         return puntsConcursants;
     }
     
-    public void llistarQualificacionsRonda() {
-        
+    public void llistarQualificacionsRonda(ArrayList<ArrayList<String>> concursants, int[] puntsConcursants, int[] indexConcursants, int zonaEliminats) {
+        for (int i=0; i<zonaEliminats; i++) {
+            String dni = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 10, ' ', 0);
+            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 0);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 20, ' ', 0);
+            String telefon = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 15, ' ', 0);
+            String punts = UtilitatsString.formatCadena(String.valueOf(puntsConcursants[indexConcursants[i]]), 5, ' ', -1);
+            System.out.println(dni + nom + cognoms + telefon + punts);
+        }
     }
     
     /**
-     *
-     * @param puntsConcursants
-     * @param indexConcursants
-     * @param limitRondaActual
-     * @return
+     * El mètode finalitzarRonda calcula els concursants eliminats a la ronda
+     * actual del concurs.
+     * @param puntsConcursants Vector d'enters que conté la puntuació acumulada
+     * de cada condursant.
+     * @param indexConcursants Vector d'enters que maté els concursants ordenats
+     * per la seva puntuació.
+     * @param zonaEliminats Enter que indica a on comença la zona de concursants
+     * eliminats.
+     * @return Un enter que identifica on comença la zona d'eliminats després
+     * d'haver completat la ronda.
      */
-    public int finalitzarRonda(int[] puntsConcursants, int[][] indexConcursants, int limitRondaActual) {
-        return 0;
+    public int finalitzarRonda(int[] puntsConcursants, int[]indexConcursants, int zonaEliminats) {
+        int limit = 0;
+        int max = puntsConcursants[indexConcursants[limit]];
+        
+        while (limit<zonaEliminats && puntsConcursants[indexConcursants[limit]]==max) {
+            limit++;
+        }
+        zonaEliminats = limit;
+        return zonaEliminats;
     }
     
-    public void llistarQualificacionsTwitter(int[] puntsConcursants, int[] indexConcursants, int limitRondaActual) {
+    public void llistarQualificacionsTwitter(int[] puntsConcursants, int[] indexConcursants, int zonaEliminats) {
         
     }
 }
