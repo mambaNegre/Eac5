@@ -27,6 +27,9 @@ public class testRoberto {
         int[][] puntuacions = new int[15][2];
         int zonaEliminats = 0;
         
+        concursants = provarInscripcioConcursants();
+        puntuacions = new int[concursants.size()][2];
+        
         do {
             if (opcio == 0) {
                 opcio = UtilitatsMenu.imprimirMenu("MENÚ PRINCIPAL", MENU_PRINCIPAL);
@@ -66,7 +69,8 @@ public class testRoberto {
                             break;
                         case 2:
                             //Puntuar una ronda
-                            qualificacions.puntuarRonda(concursants, puntuacions, zonaEliminats);
+                            puntuacions = qualificacions.puntuarRonda(concursants, puntuacions, zonaEliminats);
+                            puntuacions = qualificacions.actualitzarIndex(puntuacions);
                             break;
                         case 3:
                             //Llista qualificacions ronda
@@ -75,6 +79,7 @@ public class testRoberto {
                         case 4:
                             //Finalitzar ronda
                             zonaEliminats = qualificacions.finalitzarRonda(puntuacions, zonaEliminats);
+                            System.out.println("ZonaEliminats: " + zonaEliminats);
                             break;
                         case 5:
                             //Llista qualificacions Twitter
@@ -86,5 +91,34 @@ public class testRoberto {
                 break;
             }
         } while ( opcio != MENU_PRINCIPAL.length );
+    }
+    
+    public ArrayList<ArrayList<String>> provarInscripcioConcursants() {
+        ArrayList<ArrayList<String>> concursants = new ArrayList<>();
+        String[][] dadesConcursants = new String[][] {
+            {"34326006P", "Pep", "Rivera", "612 345 678"},
+            {"49104186Z", "Marta", "Ramos", "937 555 444"},
+            {"34326006R", "Paula", "Puyol", "910 111 222"},
+            {"18039237S", "Antoni", "García Fernández", "981 000 999"},
+            {"43213803T", "María", "Pérez Martínez", "666 666 666"},
+            {"54248434X", "José Antonio", "Rodríguez Faro", "655 222 333"},
+            {"21668843Z", "María Jesús", "López Ferández", "677 333 444"},
+            {"51139573Q", "Pepe", "Martínez", "688 444 555"},
+            {"54037105P", "Anna", "Messi", "699 555 666"},
+            {"20105383W", "Pere", "Roca", "600 666 777"}
+        };
+        
+        for (int i=0; i<10; i++) {
+            //Creem una nova fila per a cada jugador.
+            concursants.add(new ArrayList<>());
+            
+            //Creem les columnes cridant als mètodes de la classeDades;
+            concursants.get(i).add(dadesConcursants[i][0]);
+            concursants.get(i).add(dadesConcursants[i][1]);
+            concursants.get(i).add(dadesConcursants[i][2]);
+            concursants.get(i).add(dadesConcursants[i][3]);
+        }
+        
+        return concursants;
     }
 }
