@@ -39,13 +39,13 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "Menu de Selecció de Gestions";
+        String titolMenu = "Menu de Selecció de Gestions "
+                + "\nOpcions de gestió del concurs:"
+                + "\n" + utilitatsString.repetirChar("-", 30);
 
-        String[] opcions = new String[] {"\nOpcions de gestió del concurs:"
-                + "\n" + utilitatsString.repetirChar("-", 30) 
-                + "\n1 - Inscripció i gestió dels concursants",
-                "\n2 - Gestió de qualificacions",
-                "\n3 - Sortir del Programa"};
+        String[] opcions = new String[] {"\nInscripció i gestió dels concursants",
+                "\nGestió de qualificacions",
+                "\nSortir del Programa"};
         
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
@@ -74,14 +74,13 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "Menu de Gestions de Inscripcios";
+        String titolMenu = "Menu de Gestions de Inscripcios"
+                + "\nOpcions disponibles per a la gestió de concursants:"
+                + "\n" + utilitatsString.repetirChar("-", 51);
 
-        String[] opcions = new String[] {"\nOpcions disponibles per a la gestió de concursants:"
-                + "\n" + utilitatsString.repetirChar("-", 51)
-                + "\n1 - Inscripció de concursants"
-                + "\n2 - Modificació de dades dels concursants"
-                + "\n3 - Llistes de concursants"
-                + "\n4 - Torna al menu anterior"};
+        String[] opcions = new String[] {"\nInscripció de concursants",
+            "\nModificació de dades dels concursants", "\nLlistes de concursants",
+                "\nTorna al menu anterior"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
@@ -139,16 +138,13 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "Menu de Gestions de Qualificacions";
+        String titolMenu = "Menu de Gestions de Qualificacions"
+                + "\nOpcions disponibles per a la gestió del concurs y les qualificacions:"
+                + "\n" + utilitatsString.repetirChar("-", 69);
 
-        String[] opcions = new String[] {"\nOpcions disponibles per a la gestió del concurs y les qualificacions:"
-                + "\n" + utilitatsString.repetirChar("-", 69)
-                + "\n1 - Iniciar el concurs"
-                + "\n2 - Puntuar ronda"
-                + "\n3 - Mostrar llista de qualificacions de la ronda"
-                + "\n4 - Finalitzar ronda"
-                + "\n5 - Mostrar llistas de qualificacions per Twitter"
-                + "\n6 - Torna al menu anterior"};
+        String[] opcions = new String[] {"\nIniciar el concurs", "\nPuntuar ronda",
+            "\nMostrar llista de qualificacions de la ronda","\nFinalitzar ronda",
+            "\nMostrar llistas de qualificacions per Twitter","\nTorna al menu anterior"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
@@ -175,16 +171,13 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "Menu de Opcions de Modificacio de Concursants";
+        String titolMenu = "Menu de Opcions de Modificacio de Concursants"
+                + "\nModificació de dades dels concursants:"
+                + "\n" + utilitatsString.repetirChar("-", 38);
 
-        String[] opcions = new String[] {"\nModificació de dades dels concursants:"
-                + "\n" + utilitatsString.repetirChar("-", 38)
-                + "\n1 - Nom"
-                + "\n2 - Cognoms"
-                + "\n3 - Telèfon"
-                + "\n4 - Tornar a la pantalla anterior"
-                + "\n5 - Tornar al menu de gestio de concursants"
-                + "\n6 - Tornar al menu d'inici"};
+        String[] opcions = new String[] {"\nNom","\nCognoms","\nTelèfon",
+            "\nTornar a la pantalla anterior","\nTornar al menu de gestio de concursants",
+            "\nTornar al menu d'inici"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
@@ -211,14 +204,13 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "Menu de Seleció de Llistes de Concursants";
+        String titolMenu = "Menu de Seleció de Llistes de Concursants"
+                + "\nTipos de llistes de concursants:"
+                + "\n" + utilitatsString.repetirChar("-", 32);
 
-        String[] opcions = new String[] {"\nTipos de llistes de concursants:"
-                + "\n" + utilitatsString.repetirChar("-", 32)
-                + "\n1 - Llista de localització"
-                + "\n2 - Llista per publicar a Twitter"
-                + "\n3 - Tornar al menu anterior"
-                + "\n4 - Tornar al menu d'inici"};
+        String[] opcions = new String[] {"\nLlista de localització",
+            "\nLlista per publicar a Twitter", "\nTornar al menu anterior",
+            "\nTornar al menu d'inici"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
@@ -241,14 +233,13 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "Menu de Seleció de Llistes de Qualificacions per Twitter";
+        String titolMenu = "Menu de Seleció de Llistes de Qualificacions per Twitter"
+                + "\nTipus de llistas de qualificacions:"
+                + "\n" + utilitatsString.repetirChar("-", 35);
 
-        String[] opcions = new String[] {"\nTipus de llistas de qualificacions:"
-                + "\n" + utilitatsString.repetirChar("-", 35)
-                + "\n1 - Llista d'eliminats"
-                + "\n2 - Llista de concursants actius"
-                + "\n3 - Tornar al menu anterior"
-                + "\n4 - Tornar al menu d'inici"};
+        String[] opcions = new String[] {"\nLlista d'eliminats", 
+            "\nLlista de concursants actius", "\nTornar al menu anterior",
+            "\nTornar al menu d'inici"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
