@@ -1,3 +1,4 @@
+
 package EAC5.interficie;
 
 import EAC5.utilitats.*;
@@ -16,20 +17,6 @@ public class classeMenus {
     classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
 
     ArrayList<ArrayList<String>> llista;
-
-    /**
-     *
-     */
-    
-    public void metodeMisatgeBenvinguda() {
-
-        System.out.println("Benvingut al programa per gestionar concursants"
-                + " per al programa de radio 'NOMBRE'");
-        System.out.println(utilitatsString.repetirChar("=", 80));
-        System.out.println(utilitatsString.repetirChar("=", 80));
-        
-
-    }
 
     /**
      *
