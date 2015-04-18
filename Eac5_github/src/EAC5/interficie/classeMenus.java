@@ -4,6 +4,7 @@ package EAC5.interficie;
 import EAC5.utilitats.*;
 import java.util.ArrayList;
 import EAC5.concursants.*;
+import EAC5.interficie.Pantallas;
 
 /**
  *
@@ -15,6 +16,7 @@ public class classeMenus {
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
     classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
+    Pantallas pantalla = new Pantallas();
 
     ArrayList<ArrayList<String>> llista;
 
@@ -74,46 +76,33 @@ public class classeMenus {
         switch (opcio) {
 
             case 1:
-                // Lleva a InsNuevosConcursantes (en proceso)
-
-                //Creem llista dels concursants.
-                llista = objecteLlista.metodeEscriureLlista();
-
-                //Comprovar la llista per si hi ha DNIs repetits.
-                objecteLlista.metodeSiDniEstaRepetit(llista);
-
-                //Ordenar la llista pel DNI
-                llista = objecteLlista.metodeOrdenarLlista(llista);
-
+                
+                pantalla.inscripcioConcursants();
+                
                 metodeSeleccioGestio();
+                
                 break;
 
             case 2:
-            // Lleva a ModConcursantes (en proceso)
-
-                //Modificar dada/es i guardar els canvis en una nova llista.
-                llista = objecteLlista.metodeModificarLlista(llista);
-
-                //Ordenar la llista pel DNI
-                llista = objecteLlista.metodeOrdenarLlista(llista);
-
-                //Guardar la llista ordenada dins la llista Final
-                llista = objecteLlista.metodeGuardarLlista(llista);
+            
+                pantalla.modificacioConcursants();
 
                 metodeSeleccioGestio();
+                
                 break;
             
             case 3:
-            // Lleva a ListaConcursantes (en proceso)
 
                 //Mostrar la llista.
                 objecteLlista.metodeMostrarLlista(llista, "LLISTA DE CONCURSANTS");
 
                 metodeSeleccioGestio();
+                
                 break;
             
             case 4:
                 metodeSeleccioGestio();
+                
                 break;
         }
     }
