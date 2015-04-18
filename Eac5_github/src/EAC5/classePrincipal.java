@@ -17,10 +17,11 @@ public class classePrincipal {
     public static void main(String[] args) {
 
         //INSTÀNCIES (OBJECTES)
+        Pantallas objectePantalla = new Pantallas();
         classeMenus objecteMenu = new classeMenus();
         
         //INVOCACIÓ MÈTODES
-        objecteMenu.metodeMisatgeBenvinguda();
+        objectePantalla.metodeMisatgeBenvinguda();
         objecteMenu.metodeSeleccioGestio();
         
         
