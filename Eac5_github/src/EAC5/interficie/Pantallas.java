@@ -11,6 +11,7 @@ import EAC5.concursants.*;
  */
 
 public class Pantallas {
+    
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
     classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
@@ -23,7 +24,7 @@ public class Pantallas {
     
     public void metodeMisatgeBenvinguda() {
 
-        System.out.println("/nBenvingut al programa per gestionar concursants"
+        System.out.println("\nBenvingut al programa per gestionar concursants"
                 + " per al programa de radio 'NOMBRE'");
         System.out.println(utilitatsString.repetirChar("=", 80));
         System.out.println(utilitatsString.repetirChar("=", 80));
