@@ -194,10 +194,10 @@ public class classeLlistaConcursants {
      * @param missatge
      */
     public void metodeMostrarLlista(ArrayList<ArrayList<String>> llistaJugadors, String missatge) {
-        classeUtilitats objecteUtil = new classeUtilitats();
+        UtilitatsString objecteUtil = new UtilitatsString();
         
         System.out.println();
-        System.out.println(missatge + "\n" + objecteUtil.metodeRepetirChar("-", 21));
+        System.out.println(missatge + "\n" + objecteUtil.repetirChar("-", 21));
 
         for (int i = 0; i < llistaJugadors.size(); i++) {
             for (int j = 0; j < llistaJugadors.get(i).size(); j++) {

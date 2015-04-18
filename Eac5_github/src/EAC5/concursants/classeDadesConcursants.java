@@ -8,7 +8,8 @@ import EAC5.utilitats.*;
  */
 public class classeDadesConcursants {
 
-    classeUtilitats objecte = new classeUtilitats();
+    UtilitatsString utilString = new UtilitatsString();
+    Validacions validacio = new Validacions();
 
     /**
      * Mètode per escriure el dni i comprovar-lo
@@ -20,11 +21,11 @@ public class classeDadesConcursants {
         String DNI;
         boolean cert = false;
 
-        //classeUtilitats objecte = new classeUtilitats();
+        //classeUtilitats utilString = new classeUtilitats();
         do {
 
-            DNI = objecte.metodeEscriureString("\nEscriu el DNI: ");
-            cert = objecte.metodeVerificarDNI(DNI);
+            DNI = utilString.demanarString("\nEscriu el DNI: ");
+            cert = validacio.verificarDNI(DNI);
 
         } while (!cert);
 
@@ -43,8 +44,8 @@ public class classeDadesConcursants {
         
         do {
 
-            nom = objecte.metodeEscriureString("\nEscriu el NOM: ");
-            cert = objecte.metodeVerificarNoBuit(nom);
+            nom = utilString.demanarString("\nEscriu el NOM: ");
+            cert = validacio.verificarNoBuit(nom);
 
         } while (!cert);
 
@@ -64,8 +65,8 @@ public class classeDadesConcursants {
 
         do {
 
-            cognoms = objecte.metodeEscriureString("\nEscriu els COGNOMS: ");
-            cert = objecte.metodeVerificarNoBuit(cognoms);
+            cognoms = utilString.demanarString("\nEscriu els COGNOMS: ");
+            cert = validacio.verificarNoBuit(cognoms);
 
         } while (!cert);
 
@@ -84,8 +85,8 @@ public class classeDadesConcursants {
 
         do {
 
-            telefon = objecte.metodeEscriureString("\nEscriu el TELÈFON: ");
-            cert = objecte.metodeVerificarTelefon(telefon);
+            telefon = utilString.demanarString("\nEscriu el TELÈFON: ");
+            cert = validacio.verificarTelefon(telefon);
 
         } while (!cert);
 
