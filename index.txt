@@ -2,34 +2,39 @@
   - ClassePrincipal.java
     - main
     - inici
-- EAC5.interficie
-  - demanarDades.java
-    - demanarString
-    verificarDNI
-    verificarNomCognoms
-    verificarTelefon
-  - menu.java
-    - triarOpcio
-    - imprimirMenu
-- EAC5.jugadors
-  - classeDadesJugadors.java
-    - metodeEscriureString
+- EAC5.concursants
+  - classeDadesConcursants.java
     - metodeEscriureDni
     - metodeEscriureNom
     - metodeEscriureCognom
     - metodeEscriureTelefon
-  - classeLlistaJugadors.java
+  - classeLlistaConcursants.java
     - metodeEscriureLlista
-    - metodeSiDniEstaALaLlista
-    - metodeModificarLlista
+    - metodeSiDniEstaRepetit
+    - metodeModificarllista
     - metodeOrdenarLlista
     - metodeMostrarLlista
     - metodeGuardarLlista
+- EAC5.interficie
+  - classeMenu.java
+    - metodeSeleccionGestio
+    - metodeGestioInscripcions
+    - metodeGestioQualificacions
+    - metodeOpcionsModConcursants
+    - metodeLlistaConcursants
+    - metodeLlistaQualifTwitter
+    - 
+  - Pantallas.java
+    - metodeMisatgeBenvinguda
 - EAC5.utilitats
+  - UtilitatsMenu.java
+    - triarOpcio
+    - imprimirMenu
   - UtilitatsString.java
+    - demanarString
     - repetirChar
     - formatCadena
-  - validacions.java
+  - Validacions.java
     - verificarDNI
     - DNIEsUnic
     - verificarTelefon
