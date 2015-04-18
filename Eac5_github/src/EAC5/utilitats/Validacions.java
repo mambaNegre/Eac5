@@ -1,5 +1,5 @@
 package EAC5.utilitats;
-
+import java.util.ArrayList;
 
 /**
  *
@@ -8,6 +8,11 @@ package EAC5.utilitats;
 public class Validacions {
     public final static String LLETRES_VALIDES_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
     public final static String VALORS_VALIDS_TELEFON = "0123456789-. ";
+    
+    public final static int DNI = 0;
+    public final static int NOM = 1;
+    public final static int COGNOMS = 2;
+    public final static int TELEFON = 3;
 
     
     /**
@@ -51,16 +56,17 @@ public class Validacions {
     /**
      * La funció DNIEsUnic comprova que el DNI d'un concursant no està assignat
      * a cap altre concursant que s'hagi donat d'alta.
-     * @param dni El DNI que volem comprovar com a únic.
      * @param concursants La matriu de concursants que participen al concurs.
-     * @return 
+     * @param dni El DNI que volem comprovar com a únic.     
+     * @return True si el DNI és únic, false si el DNI ja ha estat assignat a
+     * altre concursant.
      */
-    public boolean DNIEsUnic(String dni, String[][] concursants) {
+    public boolean DNIEsUnic(ArrayList<ArrayList<String>> concursants, String dni) {
         // Es fa un recorregut per tots els concursants
-        for ( int i=0; i<concursants.length; i++) {
+        for ( int i=0; i<concursants.size(); i++) {
             // Si el dni comprovat és igual al d'algun altre concursant, es
             // retorna false
-            if ( dni.equals(concursants[i][0]) ) {
+            if ( dni.equals(concursants.get(i).get(DNI)) ) {
                 return false;
             }
         }
