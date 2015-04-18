@@ -21,12 +21,12 @@ public class GestioQualificacions {
      * concursants tant per NOM (primera columna) com per PUNTS (segona columna).
      * @return L'array d'enters que manté els concursants ordenats.
      */
-    public int[] iniciarConcurs(int[] puntsConcursants, int[] indexConcursants)  {
+    public int[][] iniciarConcurs(int[][] puntsConcursants)  {
         for (int i=0; i<puntsConcursants.length; i++) {
-            puntsConcursants[i] = 0;
-            indexConcursants[i] = i;
+            puntsConcursants[i][0] = 0;
+            puntsConcursants[i][1] = 1;
         }
-        return indexConcursants;
+        return puntsConcursants;
     }
     
     /**
@@ -78,28 +78,32 @@ public class GestioQualificacions {
      * @param zonaEliminats
      * @return 
      */
-    public int[] puntuarRonda(ArrayList<ArrayList<String>> concursants, int[] puntsConcursants, int zonaEliminats) {
-        String str = "Introduex puntuació (0-3) per ";
+    public int[][] puntuarRonda(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
         int punts;
         //Fer un recorregut per tots el participants que encara no han estat
         //eliminats
         
         for (int i=0; i<concursants.size()-zonaEliminats; i++) {
-            str += concursants.get(puntsConcursants[i]).get(NOM) + concursants.get(i).get(COGNOMS) + ": ";
-            punts = UtilitatsMenu.triarOpcio(str, 0, 3);            
+            System.out.println(concursants.size());
+            String str = "Introduex puntuació (0-3) per ";
+            str += concursants.get(puntuacions[i][1]).get(NOM);
+            str += " ";
+            str += concursants.get(puntuacions[i][1]).get(COGNOMS);
+            str += ": ";
+            punts = UtilitatsMenu.triarOpcio(str, 0, 3);
             //Acumular els punts per a cada participant amb el valor aleatori
-            puntsConcursants[i] += punts;
+            puntuacions[i][0] += punts;
         }
-        return puntsConcursants;
+        return puntuacions;
     }
     
-    public void llistarQualificacionsRonda(ArrayList<ArrayList<String>> concursants, int[] puntsConcursants, int[] indexConcursants, int zonaEliminats) {
-        for (int i=0; i<zonaEliminats; i++) {
+    public void llistarQualificacionsRonda(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
+        for (int i=0; i<puntuacions.length-zonaEliminats; i++) {
             String dni = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 10, ' ', 0);
             String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 0);
             String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 20, ' ', 0);
             String telefon = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 15, ' ', 0);
-            String punts = UtilitatsString.formatCadena(String.valueOf(puntsConcursants[indexConcursants[i]]), 5, ' ', -1);
+            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[i][1]), 5, ' ', -1);
             System.out.println(dni + nom + cognoms + telefon + punts);
         }
     }
@@ -116,18 +120,23 @@ public class GestioQualificacions {
      * @return Un enter que identifica on comença la zona d'eliminats després
      * d'haver completat la ronda.
      */
-    public int finalitzarRonda(int[] puntsConcursants, int[]indexConcursants, int zonaEliminats) {
+    public int finalitzarRonda(int[][] puntuacions, int zonaEliminats) {
         int limit = 0;
-        int max = puntsConcursants[indexConcursants[limit]];
+        int max = puntuacions[limit][1];
         
-        while (limit<zonaEliminats && puntsConcursants[indexConcursants[limit]]==max) {
+        while (limit<zonaEliminats && puntuacions[limit][1]==max) {
             limit++;
         }
         zonaEliminats = limit;
         return zonaEliminats;
     }
     
-    public void llistarQualificacionsTwitter(int[] puntsConcursants, int[] indexConcursants, int zonaEliminats) {
-        
+    public void llistarQualificacionsTwitter(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
+        for (int i=0; i<puntuacions.length-zonaEliminats; i++) {
+            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 25, ' ', 1);
+            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[i][1]), 5, ' ', -1);
+            System.out.println(nom + cognoms + punts);
+        }
     }
 }
