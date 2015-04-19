@@ -28,8 +28,9 @@ public class testRoberto {
         int zonaEliminats = 0;
         
         concursants = provarInscripcioConcursants();
+        concursants = llistaConcursants.metodeOrdenarLlista(concursants);
         puntuacions = new int[concursants.size()][2];
-        
+                
         do {
             if (opcio == 0) {
                 opcio = UtilitatsMenu.imprimirMenu("MENÚ PRINCIPAL", MENU_PRINCIPAL);
@@ -43,6 +44,7 @@ public class testRoberto {
                         case 1:
                             //Inscriure concursant
                             concursants = llistaConcursants.metodeEscriureLlista();
+                            concursants = llistaConcursants.metodeOrdenarLlista(concursants);
                             puntuacions = new int[concursants.size()][2];
                             break;
                         case 2:
