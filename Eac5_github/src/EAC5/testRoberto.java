@@ -65,7 +65,7 @@ public class testRoberto {
                         case 1:
                             //Iniciar concurs
                             puntuacions = qualificacions.iniciarConcurs(puntuacions);
-                            
+                            zonaEliminats = concursants.size();
                             break;
                         case 2:
                             //Puntuar una ronda
