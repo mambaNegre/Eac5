@@ -106,7 +106,7 @@ public class GestioQualificacions {
         //Fer un recorregut per tots el participants que encara no han estat
         //eliminats
         
-        for (int i=0; i<concursants.size()-zonaEliminats; i++) {
+        for (int i=0; i<zonaEliminats; i++) {
             String str = "Introdueix puntuació (0-3) per ";
             str += concursants.get(puntuacions[i][1]).get(NOM);
             str += " ";
@@ -131,7 +131,7 @@ public class GestioQualificacions {
      * en rondes prèvies.
      */
     public void llistarQualificacionsRonda(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
-        for (int i=0; i<puntuacions.length-zonaEliminats; i++) {
+        for (int i=0; i<zonaEliminats; i++) {
             String dni = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 10, ' ', 0);
             String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 0);
             String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 20, ' ', 0);
@@ -158,7 +158,7 @@ public class GestioQualificacions {
         int index = puntuacions[limit][1];
         int max = puntuacions[index][0];
         
-        while (zonaEliminats<puntuacions.length && puntuacions[index][0]==max) {
+        while (puntuacions[index][0]==max) {
             limit++;
             index = puntuacions[limit][1];
         }
