@@ -27,6 +27,14 @@
   - Pantallas.java
     - metodeMisatgeBenvinguda
 - EAC5.utilitats
+  - GestioQualificacions.java
+    - actualitzarIndex
+    - finalitzarRonda
+    - iniciarConcurs
+    - llistarQualificacionsRonda
+    - llistarQualificacionsTwitter
+    - ordenarPerPunts
+    - puntuarRonda
   - UtilitatsMenu.java
     - triarOpcio
     - imprimirMenu
