@@ -20,12 +20,19 @@
     - metodeSeleccionGestio
     - metodeGestioInscripcions
     - metodeGestioQualificacions
-    - metodeOpcionsModConcursants
-    - metodeLlistaConcursants
-    - metodeLlistaQualifTwitter
-    - 
+    - metodeOpcionsModConcursants --> Sin completar (quizás se elimina?)
+    - metodeLlistaConcursants 
   - Pantallas.java
     - metodeMisatgeBenvinguda
+    - inscripcioConcursants
+    - modificacioConcursants --> Sin completar
+    - llistaLocalConcursants
+    - llistaTwitterConcursants --> De momento vacio
+    - iniciarConcurs
+    - puntuarRonda
+    - llistaQualifRonda
+    - finalRonda
+    - qualificacionsTwitter
 - EAC5.utilitats
   - GestioQualificacions.java
     - actualitzarIndex
