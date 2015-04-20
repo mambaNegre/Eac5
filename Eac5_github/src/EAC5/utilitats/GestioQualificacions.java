@@ -158,7 +158,7 @@ public class GestioQualificacions {
         int index = puntuacions[limit][1];
         int max = puntuacions[index][0];
         
-        while (puntuacions[index][0]==max) {
+        while (puntuacions[index][0]==max && index<puntuacions.length) {
             limit++;
             index = puntuacions[limit][1];
         }
