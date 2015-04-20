@@ -103,6 +103,7 @@ public class GestioQualificacions {
      */
     public int[][] puntuarRonda(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
         int punts;
+        int pos;
         //Fer un recorregut per tots el participants que encara no han estat
         //eliminats
         
@@ -114,7 +115,8 @@ public class GestioQualificacions {
             str += ": ";
             punts = UtilitatsMenu.triarOpcio(str, 0, 3);
             //Acumular els punts per a cada participant amb el valor aleatori
-            puntuacions[i][0] += punts;
+            pos = puntuacions[i][1];
+            puntuacions[pos][0] += punts;
         }
         return puntuacions;
     }
@@ -132,12 +134,12 @@ public class GestioQualificacions {
      */
     public void llistarQualificacionsRonda(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
         for (int i=0; i<zonaEliminats; i++) {
-            String dni = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 10, ' ', 0);
-            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 0);
-            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 20, ' ', 0);
-            String telefon = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 15, ' ', 0);
-            int index = puntuacions[i][1];
-            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[index][0]), 5, ' ', -1);
+            int pos = puntuacions[i][1];
+            String dni = UtilitatsString.formatCadena(concursants.get(pos).get(DNI), 10, ' ', 0);
+            String nom = UtilitatsString.formatCadena(concursants.get(pos).get(NOM), 15, ' ', 0);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(pos).get(COGNOMS), 20, ' ', 0);
+            String telefon = UtilitatsString.formatCadena(concursants.get(pos).get(TELEFON), 15, ' ', 0);
+            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[pos][0]), 5, ' ', -1);
             System.out.println(dni + nom + cognoms + telefon + punts);
         }
     }
@@ -158,7 +160,7 @@ public class GestioQualificacions {
         int index = puntuacions[limit][1];
         int max = puntuacions[index][0];
         
-        while (puntuacions[index][0]==max && index<puntuacions.length) {
+        while (puntuacions[index][0]==max) {
             limit++;
             index = puntuacions[limit][1];
         }
@@ -167,26 +169,31 @@ public class GestioQualificacions {
     }
     
     /**
-     * 
-     * @param concursants
-     * @param puntuacions
-     * @param zonaEliminats 
+     * El mètode llistarQualificacionsTwitter imprimeix les dades dels
+     * concursants per després penjar-les al Twitter.
+     * @param concursants És la matriu que conté les dades dels participants.
+     * @param puntuacions Matriu d'enters de dues columnes; la primera columna
+     * conté la puntuació acumulada dels concursants, la segona columna manté
+     * l'ordre segons aquesta puntuació.
+     * @param zonaEliminats Enter que indica el número de concursants eliminats
+     * en rondes prèvies.
      */
     public void llistarQualificacionsTwitter(ArrayList<ArrayList<String>> concursants, int[][] puntuacions, int zonaEliminats) {
         System.out.println("CONCURSANTS ACTIUS");
+        int pos;
         for (int i=0; i<zonaEliminats; i++) {
-            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
-            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 25, ' ', 1);
-            int index = puntuacions[i][1];
-            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[index][0]), 5, ' ', -1);
+            pos = puntuacions[i][1];
+            String nom = UtilitatsString.formatCadena(concursants.get(pos).get(NOM), 15, ' ', 1);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(pos).get(COGNOMS), 25, ' ', 1);
+            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[pos][0]), 5, ' ', -1);
             System.out.println(nom + cognoms + punts);
         }
         System.out.println("CONCURSANTS ELIMINATS");
         for (int i=zonaEliminats; i<puntuacions.length; i++) {
-            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
-            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 25, ' ', 1);
-            int index = puntuacions[i][1];
-            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[index][0]), 5, ' ', -1);
+            pos = puntuacions[i][1];
+            String nom = UtilitatsString.formatCadena(concursants.get(pos).get(NOM), 15, ' ', 1);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(pos).get(COGNOMS), 25, ' ', 1);
+            String punts = UtilitatsString.formatCadena(String.valueOf(puntuacions[pos][0]), 5, ' ', -1);
             System.out.println(nom + cognoms + punts);
         }
     }
