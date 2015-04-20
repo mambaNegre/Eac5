@@ -29,28 +29,31 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "\nMenu de Selecció de Gestions "
-                + "\nOpcions de gestió del concurs:"
+        String titolMenu = "\nMENÚ PRINCIPAL"
+                + "\n\nSELECCIÓ DE GESTIONS:"
                 + "\n" + utilitatsString.repetirChar("-", 30);
 
-        String[] opcions = new String[] {"Inscripció i gestió dels concursants",
-                "Gestió de qualificacions",
-                "Sortir del Programa"};
+        String[] opcions = new String[] {"GESTIÓ D'INSCRIPCIONS",
+                "GESTIÓ DE QUALIFICACIONS",
+                "SORTIR"};
         
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
         switch (opcio) {
 
             case 1:
+                
                 metodeGestioInscripcions();
                 break;
             
             case 2:
+                
                 metodeGestioQualificacions();
                 break;
             
             case 3:
-                System.out.println("\n\tHAS FINALITZAT EL PROGRAMA.");
+                
+                System.out.println("\n\tEL PROGRAMA HA FINALITZAT.");
                 break;
 
         }
@@ -64,13 +67,13 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "\nMenu de Gestions de Inscripcios"
-                + "\nOpcions disponibles per a la gestió de concursants:"
+        String titolMenu = "\nGESTIÓ D'INSCRIPCIONS"
+                + "\n\nSELECCIÓ DE GESTIONS:"
                 + "\n" + utilitatsString.repetirChar("-", 51);
 
-        String[] opcions = new String[] {"Inscripció de concursants",
-            "Modificació de dades dels concursants", "Llistes de concursants",
-                "Torna al menu anterior"};
+        String[] opcions = new String[] {"INSCRIPCIÓ DE CONCURSANTS",
+            "MODIFICACIÓ DE DADES DELS CONCURSANTS", "LLISTA DE CONCURSANTS",
+                "< TORNAR"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
@@ -79,31 +82,24 @@ public class classeMenus {
             case 1:
                 
                 pantalla.inscripcioConcursants();
-                
-                metodeSeleccioGestio();
-                
+                metodeGestioInscripcions();
                 break;
 
             case 2:
             
                 pantalla.modificacioConcursants();
-
-                metodeSeleccioGestio();
-                
+                metodeGestioInscripcions();            
                 break;
             
             case 3:
 
-                //Mostrar la llista.
-                objecteLlista.metodeMostrarLlista(llista, "LLISTA DE CONCURSANTS");
-
-                metodeSeleccioGestio();
-                
+                metodeLlistaConcursants();
+                metodeGestioInscripcions();
                 break;
             
             case 4:
-                metodeSeleccioGestio();
                 
+                metodeSeleccioGestio();
                 break;
         }
     }
@@ -115,34 +111,50 @@ public class classeMenus {
 
         int opcio;
         
-        String titolMenu = "\nMenu de Gestions de Qualificacions"
-                + "\nOpcions disponibles per a la gestió del concurs y les qualificacions:"
+        String titolMenu = "\nGESTIÓ DE QUALIFICACIONS"
+                + "\n\nGESTIONS DEL CONCURS I LES QUALIFICACIONS:"
                 + "\n" + utilitatsString.repetirChar("-", 69);
 
-        String[] opcions = new String[] {"\nIniciar el concurs", "Puntuar ronda",
-            "Mostrar llista de qualificacions de la ronda","Finalitzar ronda",
-            "Mostrar llistas de qualificacions per Twitter","Torna al menu anterior"};
+        String[] opcions = new String[] {"\nINICIAR CONCURS", "PUNTUAR RONDA",
+            "LLISTA DE QUALIFICACIONS DE RONDA","FINALITZAR RONDA",
+            "LLISTA DE QUALIFICACIONS PER TWITTER","< TORNAR"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
         switch (opcio) {
             case 1:
-            // Lleva a iniciarConcurso
+            
+                pantalla.iniciarConcurs();
+                System.out.println("Les puntuacions han estat reseteades y tots els concursants estAn actius.");
+                metodeGestioQualificacions();
+                break;
+                
             case 2:
-            // Lleva a PuntuarRonda
+            
+                pantalla.puntuarRonda();
+                metodeGestioQualificacions();
+                break;     
+                
             case 3:
-            // Lleva a ListaCualifRonda
+                pantalla.llistaQualifRonda();
+                metodeGestioQualificacions();
+                break;
+                
             case 4:
-            // Lleva a FinalRonda
+            
+                pantalla.finalRonda();
+                metodeGestioQualificacions();
+                break;
+                
             case 5:
                 
-                metodeLlistaQualifTwitter();
-                
+                pantalla.qualificacionsTwitter();
+                metodeGestioQualificacions();
                 break;
+                
             case 6:
                 
                 metodeSeleccioGestio();
-                
                 break;
         }
     }
@@ -194,67 +206,37 @@ public class classeMenus {
 
         int opcio;
 
-        String titolMenu = "\nMenu de Seleció de Llistes de Concursants"
-                + "\nTipos de llistes de concursants:"
+        String titolMenu = "\nLLISTES DE CONCURSANTS"
+                + "\n\nTIPUS DE LLISTES:"
                 + "\n" + utilitatsString.repetirChar("-", 32);
 
-        String[] opcions = new String[] {"Llista de localització",
-            "Llista per publicar a Twitter", "Tornar al menu anterior",
-            "Tornar al menu d'inici"};
+        String[] opcions = new String[] {"LLISTA DE LOCALITZACIÓ",
+            "LLISTA DE TWITTER", "< TORNAR",
+            "< MENÚ PRINCIPAL"};
 
         opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
 
         switch (opcio) {
             case 1:
-            // Lleva a ListaConcurLoca
+                
+                pantalla.llistaLocalConcursants();
+                metodeGestioInscripcions();
+                break;
+                
             case 2:
-            // Lleva a ListaConcurTwitter
+            
+                pantalla.llistaTwitterConcursants();
+                metodeGestioInscripcions();
+                break;
+                
             case 3:
                 
                 metodeGestioInscripcions();
-                
                 break;
                 
             case 4:
                 
                 metodeSeleccioGestio();
-                
-                break;
-        }
-    }
-
-    /**
-     *
-     */
-    public void metodeLlistaQualifTwitter() {
-
-        int opcio;
-
-        String titolMenu = "\nMenu de Seleció de Llistes de Qualificacions per Twitter"
-                + "\nTipus de llistas de qualificacions:"
-                + "\n" + utilitatsString.repetirChar("-", 35);
-
-        String[] opcions = new String[] {"Llista d'eliminats", 
-            "Llista de concursants actius", "Tornar al menu anterior",
-            "Tornar al menu d'inici"};
-
-        opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
-
-        switch (opcio) {
-            case 1:
-            // Lleva a ListaCualifTwElim
-            case 2:
-            // Lleva a ListaCualifTwActiv
-            case 3:
-                
-                metodeGestioInscripcions();
-                
-                break;
-                
-            case 4:
-                
-                metodeSeleccioGestio();
-                
                 break;
         }
     }

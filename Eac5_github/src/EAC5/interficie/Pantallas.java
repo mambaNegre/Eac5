@@ -14,9 +14,13 @@ public class Pantallas {
     
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
-    classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
+    classeLlistaConcursants llistaConcursants = new classeLlistaConcursants();
+    GestioQualificacions qualificacions = new GestioQualificacions();
 
-    ArrayList<ArrayList<String>> llista;
+    ArrayList<ArrayList<String>> concursants;
+    int[][] puntuacions = new int [15][2];
+    int zonaEliminats = 0;
+    
 
     /**
      *
@@ -24,8 +28,7 @@ public class Pantallas {
     
     public void metodeMisatgeBenvinguda() {
 
-        System.out.println("\nBenvingut al programa per gestionar concursants"
-                + " per al programa de radio 'NOMBRE'");
+        System.out.println("\nBENVINGUT AL PROGRAMA DE GESTIÓ DE CONCURSOS DE RADIO");
         System.out.println(utilitatsString.repetirChar("=", 80));
         System.out.println(utilitatsString.repetirChar("=", 80));
         
@@ -37,14 +40,14 @@ public class Pantallas {
     
     public void inscripcioConcursants() {
         
-        //Creem llista dels concursants.
-        llista = objecteLlista.metodeEscriureLlista();
+        //Creació dels concursants.
+        concursants = llistaConcursants.metodeEscriureLlista();
 
-        //Comprovar la llista per si hi ha DNIs repetits.
-        objecteLlista.metodeSiDniEstaRepetit(llista);
+        //Comprovar si hi ha DNIs repetits.
+        llistaConcursants.metodeSiDniEstaRepetit(concursants);
 
-        //Ordenar la llista pel DNI
-        llista = objecteLlista.metodeOrdenarLlista(llista);
+        //Ordenar pel DNI.
+        concursants = llistaConcursants.metodeOrdenarLlista(concursants);
     }
     
     /**
@@ -53,18 +56,24 @@ public class Pantallas {
     
     public void modificacioConcursants() {
        
-        //Modificar dada/es i guardar els canvis en una nova llista.
-        llista = objecteLlista.metodeModificarLlista(llista);
+        //Modificar dades.
+        concursants = llistaConcursants.metodeModificarLlista(concursants);
 
-        //Ordenar la llista pel DNI
-        llista = objecteLlista.metodeOrdenarLlista(llista);
+        //Ordenar pel DNI.
+        concursants = llistaConcursants.metodeOrdenarLlista(concursants);
 
-        //Guardar la llista ordenada dins la llista Final
-        llista = objecteLlista.metodeGuardarLlista(llista);
+        //Guardar la llista ordenada.
+        concursants = llistaConcursants.metodeGuardarLlista(concursants);
     }
+    
+    /**
+     * 
+     */
     
     public void llistaLocalConcursants() {
         
+        String missatge = "LLISTA DE LOCALITZACIÓ DE CONCURSANTS";        
+        llistaConcursants.metodeMostrarLlista(concursants, missatge);        
     }
     
     /**
@@ -81,6 +90,12 @@ public class Pantallas {
     
     public void iniciarConcurs() {
         
+        puntuacions = new int[concursants.size()][2];
+        
+        puntuacions = qualificacions.iniciarConcurs(puntuacions);
+        
+        zonaEliminats = concursants.size();
+        
     }
     
     /**
@@ -89,6 +104,9 @@ public class Pantallas {
     
     public void puntuarRonda() {
         
+        puntuacions = qualificacions.puntuarRonda(concursants, puntuacions, zonaEliminats);
+        
+        puntuacions = qualificacions.actualitzarIndex(puntuacions);
     }
     
     /**
@@ -97,13 +115,7 @@ public class Pantallas {
     
     public void llistaQualifRonda() {
         
-    }
-    
-    /**
-     * 
-     */
-    
-    public void finalitzarRonda() {
+        qualificacions.llistarQualificacionsRonda(concursants, puntuacions, zonaEliminats);
         
     }
     
@@ -111,15 +123,18 @@ public class Pantallas {
      * 
      */
     
-    public void llistaQualifTwitEliminats() {
+    public void finalRonda() {
         
+        zonaEliminats = qualificacions.finalitzarRonda(puntuacions, zonaEliminats);
+        System.out.println("Concursants actius: " + zonaEliminats);
     }
     
     /**
      * 
      */
     
-    public void llistaQualifTwitActius() {
+    public void qualificacionsTwitter() {
         
+        qualificacions.llistarQualificacionsTwitter(concursants, puntuacions, zonaEliminats);
     }
 }
