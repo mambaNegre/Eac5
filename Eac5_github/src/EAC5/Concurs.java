@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Bea, Roberto i Joan
  */
 
-public class classePrincipal {
+public class Concurs {
 
     public static ArrayList<ArrayList<String>> llista;
     
@@ -18,12 +18,12 @@ public class classePrincipal {
     public static void main(String[] args) {
 
         //INSTÀNCIES (OBJECTES)
-        Pantallas objectePantalla = new Pantallas();
-        classeMenus objecteMenu = new classeMenus();
+        Pantallas pantalla = new Pantallas();
+        Menus menu = new Menus();
         
         //INVOCACIÓ MÈTODES
-        objectePantalla.metodeMisatgeBenvinguda();
-        objecteMenu.metodeSeleccioGestio();
+        pantalla.missatgeBenvinguda();
+        menu.seleccioGestio();
         
     }
 }

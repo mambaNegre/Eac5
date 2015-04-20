@@ -14,7 +14,7 @@ public class Pantallas {
     
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
-    classeLlistaConcursants llistaConcursants = new classeLlistaConcursants();
+    LlistaConcursants llistaConcursants = new LlistaConcursants();
     GestioQualificacions qualificacions = new GestioQualificacions();
 
     ArrayList<ArrayList<String>> concursants;
@@ -26,7 +26,7 @@ public class Pantallas {
      *
      */
     
-    public void metodeMisatgeBenvinguda() {
+    public void missatgeBenvinguda() {
 
         System.out.println("\nBENVINGUT AL PROGRAMA DE GESTIÓ DE CONCURSOS DE RADIO");
         System.out.println(utilitatsString.repetirChar("=", 80));
@@ -41,13 +41,13 @@ public class Pantallas {
     public void inscripcioConcursants() {
         
         //Creació dels concursants.
-        concursants = llistaConcursants.metodeEscriureLlista();
+        concursants = llistaConcursants.escriureLlista();
 
         //Comprovar si hi ha DNIs repetits.
-        llistaConcursants.metodeSiDniEstaRepetit(concursants);
+        llistaConcursants.siDniEstaRepetit(concursants);
 
         //Ordenar pel DNI.
-        concursants = llistaConcursants.metodeOrdenarLlista(concursants);
+        concursants = llistaConcursants.ordenarLlista(concursants);
     }
     
     /**
@@ -57,13 +57,13 @@ public class Pantallas {
     public void modificacioConcursants() {
        
         //Modificar dades.
-        concursants = llistaConcursants.metodeModificarLlista(concursants);
+        concursants = llistaConcursants.modificarLlista(concursants);
 
         //Ordenar pel DNI.
-        concursants = llistaConcursants.metodeOrdenarLlista(concursants);
+        concursants = llistaConcursants.ordenarLlista(concursants);
 
         //Guardar la llista ordenada.
-        concursants = llistaConcursants.metodeGuardarLlista(concursants);
+        concursants = llistaConcursants.guardarLlista(concursants);
     }
     
     /**
@@ -73,7 +73,7 @@ public class Pantallas {
     public void llistaLocalConcursants() {
         
         String missatge = "LLISTA DE LOCALITZACIÓ DE CONCURSANTS";        
-        llistaConcursants.metodeMostrarLlista(concursants, missatge);        
+        llistaConcursants.mostrarLlista(concursants, missatge);        
     }
     
     /**
@@ -88,7 +88,7 @@ public class Pantallas {
      * 
      */
     
-    public void iniciarConcurs() {
+    public void iniciConcurs() {
         
         puntuacions = new int[concursants.size()][2];
         
@@ -102,7 +102,7 @@ public class Pantallas {
      * 
      */
     
-    public void puntuarRonda() {
+    public void puntsRonda() {
         
         puntuacions = qualificacions.puntuarRonda(concursants, puntuacions, zonaEliminats);
         
@@ -113,7 +113,7 @@ public class Pantallas {
      * 
      */
     
-    public void llistaQualifRonda() {
+    public void qualificacionsRonda() {
         
         qualificacions.llistarQualificacionsRonda(concursants, puntuacions, zonaEliminats);
         

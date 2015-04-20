@@ -9,20 +9,20 @@ import EAC5.utilitats.*;
  *
  * @author joan
  */
-public class classeLlistaConcursants {
+public class LlistaConcursants {
 
     /**
      *
      * @return matriuJugadors
      */
-    public ArrayList<ArrayList<String>> metodeEscriureLlista() {
+    public ArrayList<ArrayList<String>> escriureLlista() {
 
         int numJugadors = 15;
         String mesJudadors = "s";
 
         //INSTÀNCIES (objectes de les diferents classe)
         Scanner S = new Scanner(System.in);
-        classeDadesConcursants objPart = new classeDadesConcursants();
+        DadesConcursants objPart = new DadesConcursants();
         ArrayList<ArrayList<String>> llistaJugadors = new ArrayList<>();
 
         for (int i = 0; i < numJugadors && !mesJudadors.equals("NO"); i++) {
@@ -31,10 +31,10 @@ public class classeLlistaConcursants {
             llistaJugadors.add(new ArrayList<>());
 
             //Creem les columnes cridant als mètodes de la classeDades;
-            llistaJugadors.get(i).add(objPart.metodeEscriureDni());
-            llistaJugadors.get(i).add(objPart.metodeEscriureNom());
-            llistaJugadors.get(i).add(objPart.metodeEscriureCognoms());
-            llistaJugadors.get(i).add(objPart.metodeEscriureTelefon());
+            llistaJugadors.get(i).add(objPart.escriureDni());
+            llistaJugadors.get(i).add(objPart.escriureNom());
+            llistaJugadors.get(i).add(objPart.escriureCognoms());
+            llistaJugadors.get(i).add(objPart.escriureTelefon());
 
             System.out.print("\nVols escriure més jugadors? (Si/No): ");
             mesJudadors = S.nextLine();
@@ -48,7 +48,7 @@ public class classeLlistaConcursants {
      *
      * @param llistaJugadors
      */
-    public void metodeSiDniEstaRepetit(ArrayList<ArrayList<String>> llistaJugadors) {
+    public void siDniEstaRepetit(ArrayList<ArrayList<String>> llistaJugadors) {
         boolean trobat = false;
         String dniCanviat;
         int posicio;
@@ -63,23 +63,23 @@ public class classeLlistaConcursants {
                     System.out.println("\n\tA la posicio " + (i + 1) + " i a la " + ((i - j) + 1));
                     trobat = true;
 
-                    metodeMostrarLlista(llistaJugadors, "LLISTA");
+                    mostrarLlista(llistaJugadors, "LLISTA");
 
                     System.out.print("\nEscriu la posició del Dni repetit que vols canviar: ");
                     posicio = S.nextInt();
 
                     if (posicio == (i + 1)) {
-                        classeDadesConcursants objecte = new classeDadesConcursants();
-                        dniCanviat = objecte.metodeEscriureDni();
+                        DadesConcursants objecte = new DadesConcursants();
+                        dniCanviat = objecte.escriureDni();
                         llistaJugadors.get(i).set(0, dniCanviat);
 
                     } else {
-                        classeDadesConcursants objecte = new classeDadesConcursants();
-                        dniCanviat = objecte.metodeEscriureDni();
+                        DadesConcursants objecte = new DadesConcursants();
+                        dniCanviat = objecte.escriureDni();
                         llistaJugadors.get(i - j).set(0, dniCanviat);
                     }
 
-                    metodeSiDniEstaRepetit(llistaJugadors);
+                    siDniEstaRepetit(llistaJugadors);
                 }
             }
         }
@@ -90,7 +90,7 @@ public class classeLlistaConcursants {
      * @param llistaJugadors
      * @return
      */
-    public ArrayList<ArrayList<String>> metodeModificarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
+    public ArrayList<ArrayList<String>> modificarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
 
         String dadaAModificar;
         String dadaNova = null;
@@ -119,8 +119,8 @@ public class classeLlistaConcursants {
 
                             if (j == 0) {
                                 System.out.print("Canvia el dni. ");
-                                classeDadesConcursants objecte = new classeDadesConcursants();
-                                dadaNova = objecte.metodeEscriureDni();
+                                DadesConcursants objecte = new DadesConcursants();
+                                dadaNova = objecte.escriureDni();
                                 llistaJugadors.get(i).set(j, dadaNova);
                                 dadaTrobada = true;
                                 System.out.println("\n\tDni canviat");
@@ -181,7 +181,7 @@ public class classeLlistaConcursants {
      * @param llistaJugadors
      * @return
      */
-    public ArrayList<ArrayList<String>> metodeOrdenarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
+    public ArrayList<ArrayList<String>> ordenarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
 
         Collections.sort(llistaJugadors, (ArrayList<String> o1, ArrayList<String> o2) -> o1.get(0).compareTo(o2.get(0)));
 
@@ -193,7 +193,7 @@ public class classeLlistaConcursants {
      * @param llistaJugadors
      * @param missatge
      */
-    public void metodeMostrarLlista(ArrayList<ArrayList<String>> llistaJugadors, String missatge) {
+    public void mostrarLlista(ArrayList<ArrayList<String>> llistaJugadors, String missatge) {
         UtilitatsString objecteUtil = new UtilitatsString();
         
         System.out.println();
@@ -213,7 +213,7 @@ public class classeLlistaConcursants {
      * @param llistaJugadors
      * @return
      */
-    public ArrayList<ArrayList<String>> metodeGuardarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
+    public ArrayList<ArrayList<String>> guardarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
         return llistaJugadors;
     }
 

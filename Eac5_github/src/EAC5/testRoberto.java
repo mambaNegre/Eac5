@@ -21,14 +21,14 @@ public class testRoberto {
         int opcio = 0;
         int op_ins;
         int op_qual;
-        classeLlistaConcursants llistaConcursants = new classeLlistaConcursants();
+        LlistaConcursants llistaConcursants = new LlistaConcursants();
         ArrayList<ArrayList<String>> concursants = null;
         GestioQualificacions qualificacions = new GestioQualificacions();
         int[][] puntuacions = new int[15][2];
         int zonaEliminats = 0;
         
         concursants = provarInscripcioConcursants();
-        concursants = llistaConcursants.metodeOrdenarLlista(concursants);
+        concursants = llistaConcursants.ordenarLlista(concursants);
         puntuacions = new int[concursants.size()][2];
                 
         do {
@@ -43,17 +43,17 @@ public class testRoberto {
                     switch (op_ins) {
                         case 1:
                             //Inscriure concursant
-                            concursants = llistaConcursants.metodeEscriureLlista();
-                            concursants = llistaConcursants.metodeOrdenarLlista(concursants);
+                            concursants = llistaConcursants.escriureLlista();
+                            concursants = llistaConcursants.ordenarLlista(concursants);
                             puntuacions = new int[concursants.size()][2];
                             break;
                         case 2:
                             //Modificar concursant
-                            llistaConcursants.metodeModificarLlista(concursants);
+                            llistaConcursants.modificarLlista(concursants);
                             break;
                         case 3:
                             //Mostrar llista
-                            llistaConcursants.metodeMostrarLlista(concursants, "LLISTA DE CONCURSANTS");
+                            llistaConcursants.mostrarLlista(concursants, "LLISTA DE CONCURSANTS");
                             break;
                         case 4:
                             opcio = 0;

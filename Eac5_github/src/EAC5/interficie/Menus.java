@@ -11,13 +11,13 @@ import EAC5.interficie.Pantallas;
  * @author Bea
  */
 
-public class classeMenus {
+public class Menus {
 
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
     Pantallas pantalla = new Pantallas();
     GestioQualificacions gestionQualif = new GestioQualificacions();
-    classeLlistaConcursants objecteLlista = new classeLlistaConcursants();
+    LlistaConcursants objecteLlista = new LlistaConcursants();
     
     ArrayList<ArrayList<String>> llista;
 
@@ -25,7 +25,7 @@ public class classeMenus {
      *
      */
     
-    public void metodeSeleccioGestio() {
+    public void seleccioGestio() {
 
         int opcio;
         
@@ -43,12 +43,12 @@ public class classeMenus {
 
             case 1:
                 
-                metodeGestioInscripcions();
+                gestioInscripcions();
                 break;
             
             case 2:
                 
-                metodeGestioQualificacions();
+                gestioQualificacions();
                 break;
             
             case 3:
@@ -63,7 +63,7 @@ public class classeMenus {
      *
      */
     
-    public void metodeGestioInscripcions() {
+    public void gestioInscripcions() {
 
         int opcio;
         
@@ -82,24 +82,24 @@ public class classeMenus {
             case 1:
                 
                 pantalla.inscripcioConcursants();
-                metodeGestioInscripcions();
+                gestioInscripcions();
                 break;
 
             case 2:
             
                 pantalla.modificacioConcursants();
-                metodeGestioInscripcions();            
+                gestioInscripcions();            
                 break;
             
             case 3:
 
-                metodeLlistaConcursants();
-                metodeGestioInscripcions();
+                llistaConcursants();
+                gestioInscripcions();
                 break;
             
             case 4:
                 
-                metodeSeleccioGestio();
+                seleccioGestio();
                 break;
         }
     }
@@ -107,7 +107,7 @@ public class classeMenus {
     /**
      *
      */
-    public void metodeGestioQualificacions() {
+    public void gestioQualificacions() {
 
         int opcio;
         
@@ -124,37 +124,37 @@ public class classeMenus {
         switch (opcio) {
             case 1:
             
-                pantalla.iniciarConcurs();
+                pantalla.iniciConcurs();
                 System.out.println("Les puntuacions han estat reseteades y tots els concursants estAn actius.");
-                metodeGestioQualificacions();
+                gestioQualificacions();
                 break;
                 
             case 2:
             
-                pantalla.puntuarRonda();
-                metodeGestioQualificacions();
+                pantalla.puntsRonda();
+                gestioQualificacions();
                 break;     
                 
             case 3:
-                pantalla.llistaQualifRonda();
-                metodeGestioQualificacions();
+                pantalla.qualificacionsRonda();
+                gestioQualificacions();
                 break;
                 
             case 4:
             
                 pantalla.finalRonda();
-                metodeGestioQualificacions();
+                gestioQualificacions();
                 break;
                 
             case 5:
                 
                 pantalla.qualificacionsTwitter();
-                metodeGestioQualificacions();
+                gestioQualificacions();
                 break;
                 
             case 6:
                 
-                metodeSeleccioGestio();
+                seleccioGestio();
                 break;
         }
     }
@@ -162,7 +162,7 @@ public class classeMenus {
     /**
      *
      */
-    public void metodeOpcionsModConcursants() {
+    public void opcionsModConcursants() {
 
         int opcio;
 
@@ -187,13 +187,13 @@ public class classeMenus {
             // Lleva a ModConcursantes
             case 5:
                 
-                metodeGestioInscripcions();
+                gestioInscripcions();
                 
                 break;
                 
             case 6:
                 
-                metodeSeleccioGestio();
+                seleccioGestio();
                 
                 break;
         }
@@ -202,7 +202,7 @@ public class classeMenus {
     /**
      *
      */
-    public void metodeLlistaConcursants() {
+    public void llistaConcursants() {
 
         int opcio;
 
@@ -220,23 +220,23 @@ public class classeMenus {
             case 1:
                 
                 pantalla.llistaLocalConcursants();
-                metodeGestioInscripcions();
+                gestioInscripcions();
                 break;
                 
             case 2:
             
                 pantalla.llistaTwitterConcursants();
-                metodeGestioInscripcions();
+                gestioInscripcions();
                 break;
                 
             case 3:
                 
-                metodeGestioInscripcions();
+                gestioInscripcions();
                 break;
                 
             case 4:
                 
-                metodeSeleccioGestio();
+                seleccioGestio();
                 break;
         }
     }

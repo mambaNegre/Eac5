@@ -6,7 +6,7 @@ import EAC5.utilitats.*;
  *
  * @author joan
  */
-public class classeDadesConcursants {
+public class DadesConcursants {
 
     UtilitatsString utilString = new UtilitatsString();
     Validacions validacio = new Validacions();
@@ -16,7 +16,7 @@ public class classeDadesConcursants {
      *
      * @return dni
      */
-    public String metodeEscriureDni() {
+    public String escriureDni() {
         
         String DNI;
         boolean cert = false;
@@ -37,7 +37,7 @@ public class classeDadesConcursants {
      *
      * @return nom
      */
-    public String metodeEscriureNom() {
+    public String escriureNom() {
 
         String nom;
         boolean cert = false;
@@ -58,7 +58,7 @@ public class classeDadesConcursants {
      *
      * @return cognoms
      */
-    public String metodeEscriureCognoms() {
+    public String escriureCognoms() {
 
         String cognoms;
         boolean cert = false;
@@ -78,7 +78,7 @@ public class classeDadesConcursants {
      *
      * @return telefon
      */
-    public String metodeEscriureTelefon() {
+    public String escriureTelefon() {
 
         String telefon;
         boolean cert = false;
