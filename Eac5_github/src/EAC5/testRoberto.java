@@ -22,8 +22,10 @@ public class testRoberto {
         int op_ins;
         int op_qual;
         LlistaConcursants llistaConcursants = new LlistaConcursants();
+        DadesConcursants dadesConcursants = new DadesConcursants();
         ArrayList<ArrayList<String>> concursants = null;
         GestioQualificacions qualificacions = new GestioQualificacions();
+        GestioConcursants gestioConcursants = new GestioConcursants();
         int[][] puntuacions = new int[15][2];
         int zonaEliminats = 0;
         
@@ -49,7 +51,42 @@ public class testRoberto {
                             break;
                         case 2:
                             //Modificar concursant
-                            llistaConcursants.modificarLlista(concursants);
+                            boolean demanarDades = true;
+                            String dni;
+                            int pos = -1;
+                            do {
+                                dni = dadesConcursants.escriureDni();
+                                if ( dni.trim().length() == 0 ) {
+                                    System.out.println("Modificació cancel·lada.");
+                                    demanarDades = false;
+                                }
+                                else {
+                                    pos = gestioConcursants.trobarDNI(concursants, dni);
+                                }
+                            } while ( pos == -1 && demanarDades );
+                            
+                            if ( pos != -1) {
+                                
+                                String titol = "MENÚ PER MODIFICAR DADES DE CONCURSANTS";
+                                titol += "\n";
+                                titol += dni;
+                                String nom = gestioConcursants.obtenirNom(concursants, pos);
+                                String cognoms = gestioConcursants.obtenirCognoms(concursants, pos);
+                                String telefon = gestioConcursants.obtenirTelefon(concursants, pos);
+                                String[] menuModificacio = {nom, cognoms, telefon, "< TORNAR"};
+                                int op_mod = UtilitatsMenu.imprimirMenu(titol, menuModificacio);
+                                switch (op_mod) {
+                                    case 1:
+                                        concursants = gestioConcursants.modificarNom(concursants, pos);
+                                        break;
+                                    case 2:
+                                        concursants = gestioConcursants.modificarCognoms(concursants, pos);
+                                        break;
+                                    case 3:
+                                        concursants = gestioConcursants.modificarTelefon(concursants, pos);
+                                        break;
+                                }
+                            }
                             break;
                         case 3:
                             //Mostrar llista
