@@ -12,6 +12,7 @@ public class GestioConcursants {
     
     DadesConcursants llista = new DadesConcursants();
     Validacions validacions = new Validacions();
+    UtilitatsString utilitatsString = new UtilitatsString();
     
     /**
      * 
@@ -81,10 +82,13 @@ public class GestioConcursants {
      * @return 
      */
     public ArrayList<ArrayList<String>> modificarNom(ArrayList<ArrayList<String>> concursants, int pos) {
+        String nomAbans = obtenirNom(concursants, pos);
         String nom = llista.escriureNom();
-        
-        concursants.get(pos).set(NOM, nom);
-        
+        String missatge = String.format("Vols confirmar l'acció? (S/N) [%s substitueix %s]: ", nom, nomAbans);
+        String confirmacio = utilitatsString.demanarString(missatge);
+        if (confirmacio.equalsIgnoreCase("s")) {
+            concursants.get(pos).set(NOM, nom);
+        }
         return concursants;
     }
     
@@ -95,9 +99,14 @@ public class GestioConcursants {
      * @return 
      */
     public ArrayList<ArrayList<String>> modificarCognoms(ArrayList<ArrayList<String>> concursants, int pos) {
+        String cognomsAbans = obtenirCognoms(concursants, pos);
         String cognoms = llista.escriureCognoms();
         
-        concursants.get(pos).set(COGNOMS, cognoms);
+        String missatge = String.format("Vols confirmar l'acció? (S/N) [%s substitueix %s]: ", cognoms, cognomsAbans);
+        String confirmacio = utilitatsString.demanarString(missatge);
+        if (confirmacio.equalsIgnoreCase("s")) {
+            concursants.get(pos).set(COGNOMS, cognoms);
+        }
         
         return concursants;
     }
@@ -109,9 +118,14 @@ public class GestioConcursants {
      * @return 
      */
     public ArrayList<ArrayList<String>> modificarTelefon(ArrayList<ArrayList<String>> concursants, int pos) {
+        String telefonAbans = obtenirTelefon(concursants, pos);
         String telefon = llista.escriureTelefon();
         
-        concursants.get(pos).set(TELEFON, telefon);
+        String missatge = String.format("Vols confirmar l'acció? (S/N) [%s substitueix %s]: ", telefon, telefonAbans);
+        String confirmacio = utilitatsString.demanarString(missatge);
+        if (confirmacio.equalsIgnoreCase("s")) {
+            concursants.get(pos).set(TELEFON, telefon);
+        }
         
         return concursants;
     }
