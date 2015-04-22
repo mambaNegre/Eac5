@@ -76,7 +76,7 @@ public class Pantallas {
      * Mostra la Llista de Concursants per Twitter
      */
     public void llistaTwitterConcursants() {
-        
+        llistaConcursants.mostrarLlistaTwitter(concursants, missatge.titolLlistaTwitter());
     }
     
     /**
