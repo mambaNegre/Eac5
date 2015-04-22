@@ -4,7 +4,6 @@ package EAC5.interficie;
 import EAC5.utilitats.*;
 import java.util.ArrayList;
 import EAC5.concursants.*;
-import EAC5.interficie.*;
 
 /**
  *

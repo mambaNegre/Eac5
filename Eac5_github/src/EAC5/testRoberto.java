@@ -1,22 +1,22 @@
 package EAC5;
 
 import EAC5.concursants.*;
-import EAC5.interficie.*;
 import EAC5.utilitats.*;
 import java.util.ArrayList;
 
 public class testRoberto {
+
     public final static String[] MENU_PRINCIPAL = {"GESTIÓ D'INSCRIPCIONS", "GESTIÓ DE QUALIFICACIONS", "SORTIR"};
     public final static String[] MENU_INSCRIPCIONS = {"INSCRIURE CONCURSANT", "MODIFICAR DADES CONCURSANT", "LLISTAR CONCURSANTS", "< TORNAR"};
     public final static String[] MENU_QUALIFICACIONS = {"INICIAR CONCURS", "PUNTUAR RONDA", "LLISTAR QUALIFICACIONS RONDA", "FINALITZAR RONDA", "LLISTAR QUALIFICACIONS TWITTER", "< TORNAR"};
     public final static int PUNTS = 0;
     public final static int INDEX_PUNTS = 1;
-    
+
     public static void main(String args[]) {
         testRoberto programa = new testRoberto();
         programa.inici();
     }
-    
+
     public void inici() {
         int opcio = 0;
         int op_ins;
@@ -28,11 +28,11 @@ public class testRoberto {
         GestioConcursants gestioConcursants = new GestioConcursants();
         int[][] puntuacions = new int[15][2];
         int zonaEliminats = 0;
-        
+
         concursants = provarInscripcioConcursants();
         concursants = llistaConcursants.ordenarLlista(concursants);
         puntuacions = new int[concursants.size()][2];
-                
+
         do {
             if (opcio == 0) {
                 opcio = UtilitatsMenu.imprimirMenu("MENÚ PRINCIPAL", MENU_PRINCIPAL);
@@ -41,7 +41,7 @@ public class testRoberto {
                 case 1:
                     //GESTIO INSCRIPCIONS
                     op_ins = UtilitatsMenu.imprimirMenu("MENÚ PER GESTIONAR INSCRIPCIONS", MENU_INSCRIPCIONS);
-                    
+
                     switch (op_ins) {
                         case 1:
                             //Inscriure concursant
@@ -56,17 +56,16 @@ public class testRoberto {
                             int pos = -1;
                             do {
                                 dni = dadesConcursants.escriureDni();
-                                if ( dni.trim().length() == 0 ) {
+                                if (dni.trim().length() == 0) {
                                     System.out.println("Modificació cancel·lada.");
                                     demanarDades = false;
-                                }
-                                else {
+                                } else {
                                     pos = gestioConcursants.trobarDNI(concursants, dni);
                                 }
-                            } while ( pos == -1 && demanarDades );
-                            
-                            if ( pos != -1) {
-                                
+                            } while (pos == -1 && demanarDades);
+
+                            if (pos != -1) {
+
                                 String titol = "MENÚ PER MODIFICAR DADES DE CONCURSANTS";
                                 titol += "\n";
                                 titol += dni;
@@ -99,7 +98,7 @@ public class testRoberto {
                 case 2:
                     //GESTIO QUALIFICACIONS
                     op_qual = UtilitatsMenu.imprimirMenu("MENÚ PER GESTIONAR QUALIFICACIONS", MENU_QUALIFICACIONS);
-                    
+
                     switch (op_qual) {
                         case 1:
                             //Iniciar concurs
@@ -127,14 +126,15 @@ public class testRoberto {
                         case 6:
                             opcio = 0;
                     }
-                break;
+                case 3:
+                    break;
             }
-        } while ( opcio != MENU_PRINCIPAL.length );
+        } while (opcio != 3);
     }
-    
+
     public ArrayList<ArrayList<String>> provarInscripcioConcursants() {
         ArrayList<ArrayList<String>> concursants = new ArrayList<>();
-        String[][] dadesConcursants = new String[][] {
+        String[][] dadesConcursants = new String[][]{
             {"34326006P", "Pep", "Rivera", "612 345 678"},
             {"49104186Z", "Marta", "Ramos", "937 555 444"},
             {"34326006R", "Paula", "Puyol", "910 111 222"},
@@ -146,18 +146,18 @@ public class testRoberto {
             {"54037105P", "Anna", "Messi", "699 555 666"},
             {"20105383W", "Pere", "Roca", "600 666 777"}
         };
-        
-        for (int i=0; i<10; i++) {
+
+        for (int i = 0; i < 10; i++) {
             //Creem una nova fila per a cada jugador.
             concursants.add(new ArrayList<>());
-            
+
             //Creem les columnes cridant als mètodes de la classeDades;
             concursants.get(i).add(dadesConcursants[i][0]);
             concursants.get(i).add(dadesConcursants[i][1]);
             concursants.get(i).add(dadesConcursants[i][2]);
             concursants.get(i).add(dadesConcursants[i][3]);
         }
-        
+
         return concursants;
     }
 }

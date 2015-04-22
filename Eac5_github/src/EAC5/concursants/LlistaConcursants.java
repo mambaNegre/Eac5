@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 import EAC5.utilitats.*;
+import static EAC5.utilitats.GestioQualificacions.COGNOMS;
+import static EAC5.utilitats.GestioQualificacions.DNI;
+import static EAC5.utilitats.GestioQualificacions.NOM;
+import static EAC5.utilitats.GestioQualificacions.TELEFON;
 
-/**
- *
- * @author joan
- */
 public class LlistaConcursants {
 
     /**
-     *
-     * @return matriuJugadors
+     * El mètode escriureLlista permet escriure les dades dels concursants i les 
+     * guarda en una llista.
+     * @return Una llista de dades
      */
     public ArrayList<ArrayList<String>> escriureLlista() {
 
@@ -23,47 +24,48 @@ public class LlistaConcursants {
         //INSTÀNCIES (objectes de les diferents classe)
         Scanner S = new Scanner(System.in);
         DadesConcursants objPart = new DadesConcursants();
-        ArrayList<ArrayList<String>> llistaJugadors = new ArrayList<>();
+        ArrayList<ArrayList<String>> concursants = new ArrayList<>();
 
         for (int i = 0; i < numJugadors && !mesJudadors.equals("NO"); i++) {
 
             //Creem una nova fila per a cada jugador.
-            llistaJugadors.add(new ArrayList<>());
+            concursants.add(new ArrayList<>());
 
             //Creem les columnes cridant als mètodes de la classeDades;
-            llistaJugadors.get(i).add(objPart.escriureDni());
-            llistaJugadors.get(i).add(objPart.escriureNom());
-            llistaJugadors.get(i).add(objPart.escriureCognoms());
-            llistaJugadors.get(i).add(objPart.escriureTelefon());
+            concursants.get(i).add(objPart.escriureDni());
+            concursants.get(i).add(objPart.escriureNom());
+            concursants.get(i).add(objPart.escriureCognoms());
+            concursants.get(i).add(objPart.escriureTelefon());
 
             System.out.print("\nVols escriure més jugadors? (Si/No): ");
             mesJudadors = S.nextLine();
             mesJudadors = mesJudadors.toUpperCase();//mètode per no fer diferència entre majúscules o minúscules
         }
 
-        return llistaJugadors;
+        return concursants;
     }
 
     /**
-     *
-     * @param llistaJugadors
+     * El mètode siDniEstaRepetit permet saber si hi ha un DNI repetir a la llista
+     * i si és així modificar-lo
+     * @param concursants La llista que rep
      */
-    public void siDniEstaRepetit(ArrayList<ArrayList<String>> llistaJugadors) {
+    public void siDniEstaRepetit(ArrayList<ArrayList<String>> concursants) {
         boolean trobat = false;
         String dniCanviat;
         int posicio;
 
         Scanner S = new Scanner(System.in);
 
-        for (int i = 1; i < llistaJugadors.size(); i++) {
-            for (int j = 1; j < llistaJugadors.size() && i >= j && !trobat; j++) {
+        for (int i = 1; i < concursants.size(); i++) {
+            for (int j = 1; j < concursants.size() && i >= j && !trobat; j++) {
 
-                if (llistaJugadors.get(i).get(0).equals(llistaJugadors.get(i - j).get(0))) {
+                if (concursants.get(i).get(0).equals(concursants.get(i - j).get(0))) {
                     System.out.println("\n\t¡¡¡¡ATENCIÓ!!!! A LA LLISTA HI HA ALMENYS UN DNI REPETIT.");
                     System.out.println("\n\tA la posicio " + (i + 1) + " i a la " + ((i - j) + 1));
                     trobat = true;
 
-                    mostrarLlista(llistaJugadors, "LLISTA");
+                    mostrarLlista(concursants, "LLISTA");
 
                     System.out.print("\nEscriu la posició del Dni repetit que vols canviar: ");
                     posicio = S.nextInt();
@@ -71,26 +73,26 @@ public class LlistaConcursants {
                     if (posicio == (i + 1)) {
                         DadesConcursants objecte = new DadesConcursants();
                         dniCanviat = objecte.escriureDni();
-                        llistaJugadors.get(i).set(0, dniCanviat);
+                        concursants.get(i).set(0, dniCanviat);
 
                     } else {
                         DadesConcursants objecte = new DadesConcursants();
                         dniCanviat = objecte.escriureDni();
-                        llistaJugadors.get(i - j).set(0, dniCanviat);
+                        concursants.get(i - j).set(0, dniCanviat);
                     }
 
-                    siDniEstaRepetit(llistaJugadors);
+                    siDniEstaRepetit(concursants);
                 }
             }
         }
     }
 
     /**
-     *
-     * @param llistaJugadors
-     * @return
+     * El mètode modificarLlista permet modificar les dades de la llista
+     * @param concursants Una llista
+     * @return Una llista ja modificada
      */
-    public ArrayList<ArrayList<String>> modificarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
+    public ArrayList<ArrayList<String>> modificarLlista(ArrayList<ArrayList<String>> concursants) {
 
         String dadaAModificar;
         String dadaNova = null;
@@ -112,16 +114,16 @@ public class LlistaConcursants {
                 dadaAModificar = S.nextLine();
                 dadaTrobada = false;
 
-                for (int i = 0; i < llistaJugadors.size() && !dadaTrobada; i++) {
-                    for (int j = 0; j < llistaJugadors.get(i).size() && !dadaTrobada; j++) {
+                for (int i = 0; i < concursants.size() && !dadaTrobada; i++) {
+                    for (int j = 0; j < concursants.get(i).size() && !dadaTrobada; j++) {
 
-                        if (llistaJugadors.get(i).get(j).equals(dadaAModificar)) {
+                        if (concursants.get(i).get(j).equals(dadaAModificar)) {
 
                             if (j == 0) {
                                 System.out.print("Canvia el dni. ");
                                 DadesConcursants objecte = new DadesConcursants();
                                 dadaNova = objecte.escriureDni();
-                                llistaJugadors.get(i).set(j, dadaNova);
+                                concursants.get(i).set(j, dadaNova);
                                 dadaTrobada = true;
                                 System.out.println("\n\tDni canviat");
 
@@ -130,7 +132,7 @@ public class LlistaConcursants {
                                 System.out.print("Escriu la nova dada: ");
                                 dadaNova = S.nextLine();
 
-                                llistaJugadors.get(i).set(j, dadaNova);
+                                concursants.get(i).set(j, dadaNova);
                                 dadaTrobada = true;
                                 System.out.println("\n\tNom canviat");
 
@@ -139,7 +141,7 @@ public class LlistaConcursants {
                                 System.out.print("Escriu la nova dada: ");
                                 dadaNova = S.nextLine();
 
-                                llistaJugadors.get(i).set(j, dadaNova);
+                                concursants.get(i).set(j, dadaNova);
                                 dadaTrobada = true;
                                 System.out.println("\n\tCognoms canviats");
 
@@ -148,7 +150,7 @@ public class LlistaConcursants {
                                 System.out.print("Escriu la nova dada: ");
                                 dadaNova = S.nextLine();
 
-                                llistaJugadors.get(i).set(j, dadaNova);
+                                concursants.get(i).set(j, dadaNova);
                                 dadaTrobada = true;
                                 System.out.println("\n\tTelèfon canviat");
                             }
@@ -173,38 +175,41 @@ public class LlistaConcursants {
             System.out.println("\n\tLa llista de jugadors s'ha guardat");
         }
 
-        return llistaJugadors;
+        return concursants;
     }
 
     /**
-     *
-     * @param llistaJugadors
-     * @return
+     * El mètode ordenarLlista permet ordenar la llista segons els DNI  i la 
+     * ordena de manera ascendent
+     * @param concursants Una llista per ordenar
+     * @return Un llista ordenada
      */
-    public ArrayList<ArrayList<String>> ordenarLlista(ArrayList<ArrayList<String>> llistaJugadors) {
+    public ArrayList<ArrayList<String>> ordenarLlista(ArrayList<ArrayList<String>> concursants) {
 
-        Collections.sort(llistaJugadors, (ArrayList<String> o1, ArrayList<String> o2) -> o1.get(0).compareTo(o2.get(0)));
+        Collections.sort(concursants, (ArrayList<String> o1, ArrayList<String> o2) -> o1.get(0).compareTo(o2.get(0)));
 
-        return llistaJugadors;
+        return concursants;
     }
 
     /**
-     *
-     * @param llistaJugadors
-     * @param missatge
+     * El mètode mostrarLlista permet mostrar la llista dels concurants d'una 
+     * forma tabulada.
+     * @param concursants Una llista
+     * @param missatge És el títol que portarà la llista.
      */
-    public void mostrarLlista(ArrayList<ArrayList<String>> llistaJugadors, String missatge) {
+    public void mostrarLlista(ArrayList<ArrayList<String>> concursants, String missatge) {
         UtilitatsString objecteUtil = new UtilitatsString();
-        
+
         System.out.println();
         System.out.println(missatge + "\n" + objecteUtil.repetirChar("-", 21));
 
-        for (int i = 0; i < llistaJugadors.size(); i++) {
-            for (int j = 0; j < llistaJugadors.get(i).size(); j++) {
-
-                System.out.print(llistaJugadors.get(i).get(j) + "        ");
-            }
-            System.out.println();
+        for (int i = 0; i < concursants.size(); i++) {
+            String dni = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 15, ' ', 1);
+            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 25, ' ', 1); 
+            String telefon = UtilitatsString.formatCadena(concursants.get(i).get(TELEFON), 15, ' ', 1); 
+            
+            System.out.println(dni + nom + cognoms + telefon);
         }
     }
 
