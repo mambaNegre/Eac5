@@ -1,4 +1,3 @@
-
 package EAC5.interficie;
 
 import EAC5.utilitats.*;
@@ -14,7 +13,9 @@ public class Pantallas {
     
     UtilitatsString utilitatsString = new UtilitatsString();
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
+    DadesConcursants dadesConcursants = new DadesConcursants();
     LlistaConcursants llistaConcursants = new LlistaConcursants();
+    GestioConcursants gestioConcursants = new GestioConcursants();
     GestioQualificacions qualificacions = new GestioQualificacions();
     Missatges missatge = new Missatges();
 
@@ -49,19 +50,38 @@ public class Pantallas {
         concursants = llistaConcursants.ordenarLlista(concursants);
     }
     
-    /**
-     * Modificació de Concursants
-     */
-    public void modificacioConcursants() {
-       
-        //Modificar dades.
-        concursants = llistaConcursants.modificarLlista(concursants);
-
-        //Ordenar pel DNI.
-        concursants = llistaConcursants.ordenarLlista(concursants);
-
-        //Guardar la llista ordenada.
-        concursants = llistaConcursants.guardarLlista(concursants);
+    public int demanarConcursant() {
+        
+        boolean demanarDades = true;
+        String dni;
+        int pos = -1;
+        
+        do {
+            dni = dadesConcursants.escriureDni();
+            if (dni.trim().length()== 0) {
+                System.out.println("Modificació cancel·lada.");
+                demanarDades = false;
+            } else {
+                pos = gestioConcursants.trobarDNI(concursants, dni);
+            }          
+        } while (pos == -1 && demanarDades);
+        
+        return pos;
+    }
+    
+    public void modNom (int pos) {
+        
+        concursants = gestioConcursants.modificarNom(concursants, pos);
+    }
+    
+    public void modCognom (int pos) {
+        
+        concursants = gestioConcursants.modificarCognoms(concursants, pos);
+    }
+    
+    public void modTelefon (int pos) {
+        
+        concursants = gestioConcursants.modificarTelefon(concursants, pos);
     }
     
     /**

@@ -1,4 +1,3 @@
-
 package EAC5.interficie;
 
 import EAC5.utilitats.*;
@@ -69,7 +68,7 @@ public class Menus {
 
             case 2:
             
-                pantalla.modificacioConcursants();
+                modificacioConcursants();
                 gestioInscripcions();            
                 break;
             
@@ -136,28 +135,37 @@ public class Menus {
     /**
      * Menú d'opcions de Modificació de Dades de Concursants.
      */
-    public void opcionsModConcursants() {
+    public void modificacioConcursants() {
 
         int opcio;
+        
+        int pos = pantalla.demanarConcursant();
 
         opcio = utilitatsMenu.imprimirMenu(missatge.getTitolModificacioDades(), missatge.getOpcionsModificacioDades());
 
         switch (opcio) {
             case 1:
-            // Lleva a ModNombre
+                
+                pantalla.modNom(pos);
+                break;
+                
             case 2:
-            // Lleva a ModApellidos
+                
+                pantalla.modCognom(pos);
+                break;
+            
             case 3:
-            // Lleva a ModTelefono
+                
+                pantalla.modTelefon(pos);
+                break;
+            
             case 4:
-            // Lleva a ModConcursantes
-            case 5:
                 
                 gestioInscripcions();
                 
                 break;
                 
-            case 6:
+            case 5:
                 
                 seleccioGestio();
                 

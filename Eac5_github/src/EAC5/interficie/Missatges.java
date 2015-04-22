@@ -1,7 +1,7 @@
-
 package EAC5.interficie;
 
-import EAC5.utilitats.UtilitatsString;
+import EAC5.utilitats.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,6 +11,9 @@ import EAC5.utilitats.UtilitatsString;
 public class Missatges {
     
     UtilitatsString utilitatsString = new UtilitatsString();
+    GestioConcursants gestioConcursants = new GestioConcursants();
+    
+    ArrayList<ArrayList<String>> concursants;
     
     /**
      *
@@ -105,8 +108,7 @@ public class Missatges {
      */
     public String getTitolModificacioDades() {
         
-        String titol = "\nMenu de Opcions de Modificacio de Concursants"
-                + "\nModificació de dades dels concursants:"
+        String titol = "\nOPCIONS DE MODIFICACIÓ DE CONCURSANTS"
                 + "\n" + utilitatsString.repetirChar("-", 38);
         
         return titol;
@@ -118,9 +120,8 @@ public class Missatges {
      */
     public String[] getOpcionsModificacioDades() {
         
-        String[] opcions = new String[] {"Nom","Cognoms","Telèfon",
-            "Tornar a la pantalla anterior","Tornar al menu de gestio de concursants",
-            "Tornar al menu d'inici"};
+        String[] opcions = new String[] {"NOM","COGNOM","TELEFON","< TORNAR",
+            "< MENÚ PRINCIPAL"};
         
         return opcions;
     }
