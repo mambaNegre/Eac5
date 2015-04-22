@@ -15,6 +15,7 @@ public class Concurs {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
 
         //INSTÀNCIES (OBJECTES)
@@ -22,7 +23,7 @@ public class Concurs {
         Menus menu = new Menus();
         
         //INVOCACIÓ MÈTODES
-        pantalla.missatgeBenvinguda();
+        pantalla.missatgeInici();
         menu.seleccioGestio();
         
     }

@@ -16,6 +16,7 @@ public class Pantallas {
     UtilitatsMenu utilitatsMenu = new UtilitatsMenu();
     LlistaConcursants llistaConcursants = new LlistaConcursants();
     GestioQualificacions qualificacions = new GestioQualificacions();
+    Missatges missatge = new Missatges();
 
     ArrayList<ArrayList<String>> concursants;
     int[][] puntuacions = new int [15][2];
@@ -23,21 +24,19 @@ public class Pantallas {
     
 
     /**
-     *
+     * Missatge d'inici del programa
      */
-    
-    public void missatgeBenvinguda() {
+    public void missatgeInici() {
 
-        System.out.println("\nBENVINGUT AL PROGRAMA DE GESTIÓ DE CONCURSOS DE RADIO");
+        System.out.println(missatge.missatgeBenvinguda());
         System.out.println(utilitatsString.repetirChar("=", 80));
         System.out.println(utilitatsString.repetirChar("=", 80));
         
     }
     
     /**
-     * 
+     * Inscripció de Concursants
      */
-    
     public void inscripcioConcursants() {
         
         //Creació dels concursants.
@@ -51,9 +50,8 @@ public class Pantallas {
     }
     
     /**
-     * 
+     * Modificació de Concursants
      */
-    
     public void modificacioConcursants() {
        
         //Modificar dades.
@@ -67,19 +65,16 @@ public class Pantallas {
     }
     
     /**
-     * 
+     * Mostra la Llista de localització de Concursants
      */
-    
     public void llistaLocalConcursants() {
-        
-        String missatge = "LLISTA DE LOCALITZACIÓ DE CONCURSANTS";        
-        llistaConcursants.mostrarLlista(concursants, missatge);        
+                
+        llistaConcursants.mostrarLlista(concursants, missatge.titolLlistaLocal());        
     }
     
     /**
-     * 
+     * Mostra la Llista de Concursants per Twitter
      */
-    
     public void llistaTwitterConcursants() {
         
     }
@@ -87,7 +82,6 @@ public class Pantallas {
     /**
      * 
      */
-    
     public void iniciConcurs() {
         
         puntuacions = new int[concursants.size()][2];
@@ -101,7 +95,6 @@ public class Pantallas {
     /**
      * 
      */
-    
     public void puntsRonda() {
         
         puntuacions = qualificacions.puntuarRonda(concursants, puntuacions, zonaEliminats);
@@ -112,7 +105,6 @@ public class Pantallas {
     /**
      * 
      */
-    
     public void qualificacionsRonda() {
         
         qualificacions.llistarQualificacionsRonda(concursants, puntuacions, zonaEliminats);
@@ -122,7 +114,6 @@ public class Pantallas {
     /**
      * 
      */
-    
     public void finalRonda() {
         
         zonaEliminats = qualificacions.finalitzarRonda(puntuacions, zonaEliminats);
@@ -130,9 +121,9 @@ public class Pantallas {
     }
     
     /**
-     * 
+     * Mostra dues llistes de qualificacions per Twitter, una amb els 
+     * concursants actius i l'altre amb els eliminats.
      */
-    
     public void qualificacionsTwitter() {
         
         qualificacions.llistarQualificacionsTwitter(concursants, puntuacions, zonaEliminats);

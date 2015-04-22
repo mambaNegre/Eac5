@@ -4,7 +4,7 @@ package EAC5.interficie;
 import EAC5.utilitats.*;
 import java.util.ArrayList;
 import EAC5.concursants.*;
-import EAC5.interficie.Pantallas;
+import EAC5.interficie.*;
 
 /**
  *
@@ -18,26 +18,18 @@ public class Menus {
     Pantallas pantalla = new Pantallas();
     GestioQualificacions gestionQualif = new GestioQualificacions();
     LlistaConcursants objecteLlista = new LlistaConcursants();
+    Missatges missatge = new Missatges();
     
     ArrayList<ArrayList<String>> llista;
 
     /**
-     *
+     * Menú de Selecció de Gestións del Concurs. Primer menú del programa.
      */
-    
     public void seleccioGestio() {
 
         int opcio;
         
-        String titolMenu = "\nMENÚ PRINCIPAL"
-                + "\n\nSELECCIÓ DE GESTIONS:"
-                + "\n" + utilitatsString.repetirChar("-", 30);
-
-        String[] opcions = new String[] {"GESTIÓ D'INSCRIPCIONS",
-                "GESTIÓ DE QUALIFICACIONS",
-                "SORTIR"};
-        
-        opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
+        opcio = utilitatsMenu.imprimirMenu(missatge.getTitolMenuGestions(), missatge.getOpcionsMenuGestions());
 
         switch (opcio) {
 
@@ -60,22 +52,13 @@ public class Menus {
     }
 
     /**
-     *
+     * Menú de Gestió d'Inscripcions.
      */
-    
     public void gestioInscripcions() {
 
         int opcio;
-        
-        String titolMenu = "\nGESTIÓ D'INSCRIPCIONS"
-                + "\n\nSELECCIÓ DE GESTIONS:"
-                + "\n" + utilitatsString.repetirChar("-", 51);
 
-        String[] opcions = new String[] {"INSCRIPCIÓ DE CONCURSANTS",
-            "MODIFICACIÓ DE DADES DELS CONCURSANTS", "LLISTA DE CONCURSANTS",
-                "< TORNAR"};
-
-        opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
+        opcio = utilitatsMenu.imprimirMenu(missatge.getTitolInscripcions(), missatge.getOpcionsInscripcions());
 
         switch (opcio) {
 
@@ -105,21 +88,13 @@ public class Menus {
     }
 
     /**
-     *
+     * Menú de Gestió de Qualificacions
      */
     public void gestioQualificacions() {
 
         int opcio;
-        
-        String titolMenu = "\nGESTIÓ DE QUALIFICACIONS"
-                + "\n\nGESTIONS DEL CONCURS I LES QUALIFICACIONS:"
-                + "\n" + utilitatsString.repetirChar("-", 69);
 
-        String[] opcions = new String[] {"\nINICIAR CONCURS", "PUNTUAR RONDA",
-            "LLISTA DE QUALIFICACIONS DE RONDA","FINALITZAR RONDA",
-            "LLISTA DE QUALIFICACIONS PER TWITTER","< TORNAR"};
-
-        opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
+        opcio = utilitatsMenu.imprimirMenu(missatge.getTitolQualificacions(), missatge.getOpcionsQualificacions());
 
         switch (opcio) {
             case 1:
@@ -160,21 +135,13 @@ public class Menus {
     }
 
     /**
-     *
+     * Menú d'opcions de Modificació de Dades de Concursants.
      */
     public void opcionsModConcursants() {
 
         int opcio;
 
-        String titolMenu = "\nMenu de Opcions de Modificacio de Concursants"
-                + "\nModificació de dades dels concursants:"
-                + "\n" + utilitatsString.repetirChar("-", 38);
-
-        String[] opcions = new String[] {"Nom","Cognoms","Telèfon",
-            "Tornar a la pantalla anterior","Tornar al menu de gestio de concursants",
-            "Tornar al menu d'inici"};
-
-        opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
+        opcio = utilitatsMenu.imprimirMenu(missatge.getTitolModificacioDades(), missatge.getOpcionsModificacioDades());
 
         switch (opcio) {
             case 1:
@@ -200,21 +167,13 @@ public class Menus {
     }
 
     /**
-     *
+     * Menú de Llistes de Concursants.
      */
     public void llistaConcursants() {
 
         int opcio;
 
-        String titolMenu = "\nLLISTES DE CONCURSANTS"
-                + "\n\nTIPUS DE LLISTES:"
-                + "\n" + utilitatsString.repetirChar("-", 32);
-
-        String[] opcions = new String[] {"LLISTA DE LOCALITZACIÓ",
-            "LLISTA DE TWITTER", "< TORNAR",
-            "< MENÚ PRINCIPAL"};
-
-        opcio = utilitatsMenu.imprimirMenu(titolMenu, opcions);
+        opcio = utilitatsMenu.imprimirMenu(missatge.getTitolLlistesConcursants(), missatge.getOpcionsLlistesConcursants());
 
         switch (opcio) {
             case 1:
