@@ -37,7 +37,7 @@ public class LlistaConcursants {
             concursants.get(i).add(objPart.escriureCognoms());
             concursants.get(i).add(objPart.escriureTelefon());
 
-            System.out.print("\nVols escriure més jugadors? (Si/No): ");
+            System.out.print("\nVols inscriure més jugadors? (Si/No): ");
             mesJudadors = S.nextLine();
             mesJudadors = mesJudadors.toUpperCase();//mètode per no fer diferència entre majúscules o minúscules
         }
@@ -210,6 +210,21 @@ public class LlistaConcursants {
             String telefon = UtilitatsString.formatCadena(concursants.get(i).get(TELEFON), 15, ' ', 1); 
             
             System.out.println(dni + nom + cognoms + telefon);
+        }
+    }
+    
+    public void mostrarLlistaTwitter(ArrayList<ArrayList<String>> concursants, String missatge) {
+        Collections.sort(concursants, (ArrayList<String> o1, ArrayList<String> o2) -> o1.get(2).compareTo(o2.get(2)));
+        UtilitatsString objecteUtil = new UtilitatsString();
+
+        System.out.println();
+        System.out.println(missatge + "\n" + objecteUtil.repetirChar("-", 38));
+
+        for (int i = 0; i < concursants.size(); i++) {
+            String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
+            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 23, ' ', 1);
+            
+            System.out.println(nom + cognoms);
         }
     }
 

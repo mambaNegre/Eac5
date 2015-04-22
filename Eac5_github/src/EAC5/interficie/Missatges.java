@@ -162,4 +162,10 @@ public class Missatges {
         
         return titol;
     }
+    
+    public String titolLlistaTwitter() {
+        String titol = "LLISTA DE TWITTER DE CONCURSANTS";
+        
+        return titol;
+    }
 }
