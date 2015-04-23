@@ -95,7 +95,7 @@ public class Missatges {
      */
     public String[] getOpcionsQualificacions() {
         
-        String[] opcions = new String[] {"\nINICIAR CONCURS", "PUNTUAR RONDA",
+        String[] opcions = new String[] {"INICIAR CONCURS", "PUNTUAR RONDA",
             "LLISTA DE QUALIFICACIONS DE RONDA","FINALITZAR RONDA",
             "LLISTA DE QUALIFICACIONS PER TWITTER","< TORNAR"};
         

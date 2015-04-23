@@ -44,7 +44,7 @@ public class Menus {
             case 3:
                 
                 System.out.println("\n\tEL PROGRAMA HA FINALITZAT.");
-                break;
+                System.exit(0);
 
         }
     }
