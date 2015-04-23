@@ -26,7 +26,11 @@ public class DadesConcursants {
 
             DNI = utilString.demanarString("\nEscriu el DNI: ");
             cert = validacio.verificarDNI(DNI);
-
+            
+            if (!cert) {
+                System.out.println("\n\t¡DNI incorrecte!");
+            }
+        
         } while (!cert);
 
         return DNI;
@@ -46,7 +50,11 @@ public class DadesConcursants {
 
             nom = utilString.demanarString("\nEscriu el NOM: ");
             cert = validacio.verificarNoBuit(nom);
-
+            
+            if (!cert) {
+                System.out.println("\n\t¡No has escrit cap NOM!");
+            }
+        
         } while (!cert);
 
         return nom;
@@ -67,7 +75,11 @@ public class DadesConcursants {
 
             cognoms = utilString.demanarString("\nEscriu els COGNOMS: ");
             cert = validacio.verificarNoBuit(cognoms);
-
+            
+            if (!cert) {
+                System.out.println("\n\t¡No has escrit cap COGNOM!");
+            }
+        
         } while (!cert);
 
         return cognoms;
@@ -87,6 +99,10 @@ public class DadesConcursants {
 
             telefon = utilString.demanarString("\nEscriu el TELÈFON: ");
             cert = validacio.verificarTelefon(telefon);
+            
+            if (!cert) {
+                System.out.println("\n\t¡TELEFON incorrecte!");
+            }
 
         } while (!cert);
 
