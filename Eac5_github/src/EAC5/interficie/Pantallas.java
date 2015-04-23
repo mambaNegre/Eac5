@@ -50,6 +50,10 @@ public class Pantallas {
         concursants = llistaConcursants.ordenarLlista(concursants);
     }
     
+    /**
+     * 
+     * @return La posicio del concursant a modificar.
+     */
     public int demanarConcursant() {
         
         boolean demanarDades = true;
@@ -69,16 +73,28 @@ public class Pantallas {
         return pos;
     }
     
+    /**
+     * 
+     * @param pos 
+     */
     public void modNom (int pos) {
         
         concursants = gestioConcursants.modificarNom(concursants, pos);
     }
     
+    /**
+     * 
+     * @param pos 
+     */
     public void modCognom (int pos) {
         
         concursants = gestioConcursants.modificarCognoms(concursants, pos);
     }
     
+    /**
+     * 
+     * @param pos 
+     */
     public void modTelefon (int pos) {
         
         concursants = gestioConcursants.modificarTelefon(concursants, pos);

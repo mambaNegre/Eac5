@@ -20,7 +20,7 @@ public class LlistaConcursants {
     public ArrayList<ArrayList<String>> escriureLlista() {
 
         int numJugadors = 15;
-        String mesJudadors = "s";
+        String mesJugadors = "s";
         boolean continuar = true;
 
         //INSTÀNCIES (objectes de les diferents classe)
@@ -41,20 +41,20 @@ public class LlistaConcursants {
 
             do {
                 System.out.print("\nVols inscriure més jugadors? (Si/No): ");
-                mesJudadors = S.nextLine();
-                mesJudadors = mesJudadors.toUpperCase();//mètode per no fer diferència entre majúscules o minúscules
+                mesJugadors = S.nextLine();
+                mesJugadors = mesJugadors.toUpperCase();//mètode per no fer diferència entre majúscules o minúscules
 
-                if (mesJudadors.equals("SI")) {
+                if (mesJugadors.equals("SI")) {
                     continuar = true;
 
-                } else if (mesJudadors.equals("NO")) {
+                } else if (mesJugadors.equals("NO")) {
                     continuar = false;
                 
                 } else {
                     System.out.println("\n\tEscriu [Si o No]. ");
                 }
 
-            } while (!mesJudadors.equals("SI") && !mesJudadors.equals("NO"));
+            } while (!mesJugadors.equals("SI") && !mesJugadors.equals("NO"));
 
         }
 

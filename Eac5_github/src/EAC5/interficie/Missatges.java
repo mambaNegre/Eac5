@@ -163,6 +163,10 @@ public class Missatges {
         return titol;
     }
     
+    /**
+     * 
+     * @return String amb el titol per l'impresió de la Llista concursants per Twitter.
+     */
     public String titolLlistaTwitter() {
         String titol = "LLISTA DE TWITTER DE CONCURSANTS";
         
