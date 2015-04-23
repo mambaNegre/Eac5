@@ -12,21 +12,23 @@ import static EAC5.utilitats.GestioQualificacions.TELEFON;
 public class LlistaConcursants {
 
     /**
-     * El mètode escriureLlista permet escriure les dades dels concursants i les 
+     * El mètode escriureLlista permet escriure les dades dels concursants i les
      * guarda en una llista.
+     *
      * @return Una llista de dades
      */
     public ArrayList<ArrayList<String>> escriureLlista() {
 
         int numJugadors = 15;
         String mesJudadors = "s";
+        boolean continuar = true;
 
         //INSTÀNCIES (objectes de les diferents classe)
         Scanner S = new Scanner(System.in);
         DadesConcursants objPart = new DadesConcursants();
         ArrayList<ArrayList<String>> concursants = new ArrayList<>();
 
-        for (int i = 0; i < numJugadors && !mesJudadors.equals("NO"); i++) {
+        for (int i = 0; i < numJugadors && continuar; i++) {
 
             //Creem una nova fila per a cada jugador.
             concursants.add(new ArrayList<>());
@@ -37,17 +39,32 @@ public class LlistaConcursants {
             concursants.get(i).add(objPart.escriureCognoms());
             concursants.get(i).add(objPart.escriureTelefon());
 
-            System.out.print("\nVols inscriure més jugadors? (Si/No): ");
-            mesJudadors = S.nextLine();
-            mesJudadors = mesJudadors.toUpperCase();//mètode per no fer diferència entre majúscules o minúscules
+            do {
+                System.out.print("\nVols inscriure més jugadors? (Si/No): ");
+                mesJudadors = S.nextLine();
+                mesJudadors = mesJudadors.toUpperCase();//mètode per no fer diferència entre majúscules o minúscules
+
+                if (mesJudadors.equals("SI")) {
+                    continuar = true;
+
+                } else if (mesJudadors.equals("NO")) {
+                    continuar = false;
+                
+                } else {
+                    System.out.println("\n\tEscriu [Si o No]. ");
+                }
+
+            } while (!mesJudadors.equals("SI") && !mesJudadors.equals("NO"));
+
         }
 
         return concursants;
     }
 
     /**
-     * El mètode siDniEstaRepetit permet saber si hi ha un DNI repetir a la llista
-     * i si és així modificar-lo
+     * El mètode siDniEstaRepetit permet saber si hi ha un DNI repetir a la
+     * llista i si és així modificar-lo
+     *
      * @param concursants La llista que rep
      */
     public void siDniEstaRepetit(ArrayList<ArrayList<String>> concursants) {
@@ -89,6 +106,7 @@ public class LlistaConcursants {
 
     /**
      * El mètode modificarLlista permet modificar les dades de la llista
+     *
      * @param concursants Una llista
      * @return Una llista ja modificada
      */
@@ -179,8 +197,9 @@ public class LlistaConcursants {
     }
 
     /**
-     * El mètode ordenarLlista permet ordenar la llista segons els DNI  i la 
+     * El mètode ordenarLlista permet ordenar la llista segons els DNI i la
      * ordena de manera ascendent
+     *
      * @param concursants Una llista per ordenar
      * @return Un llista ordenada
      */
@@ -192,8 +211,9 @@ public class LlistaConcursants {
     }
 
     /**
-     * El mètode mostrarLlista permet mostrar la llista dels concurants d'una 
+     * El mètode mostrarLlista permet mostrar la llista dels concurants d'una
      * forma tabulada.
+     *
      * @param concursants Una llista
      * @param missatge És el títol que portarà la llista.
      */
@@ -206,13 +226,13 @@ public class LlistaConcursants {
         for (int i = 0; i < concursants.size(); i++) {
             String dni = UtilitatsString.formatCadena(concursants.get(i).get(DNI), 15, ' ', 1);
             String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
-            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 25, ' ', 1); 
-            String telefon = UtilitatsString.formatCadena(concursants.get(i).get(TELEFON), 15, ' ', 1); 
-            
+            String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 25, ' ', 1);
+            String telefon = UtilitatsString.formatCadena(concursants.get(i).get(TELEFON), 15, ' ', 1);
+
             System.out.println(dni + nom + cognoms + telefon);
         }
     }
-    
+
     public void mostrarLlistaTwitter(ArrayList<ArrayList<String>> concursants, String missatge) {
         Collections.sort(concursants, (ArrayList<String> o1, ArrayList<String> o2) -> o1.get(2).compareTo(o2.get(2)));
         UtilitatsString objecteUtil = new UtilitatsString();
@@ -223,7 +243,7 @@ public class LlistaConcursants {
         for (int i = 0; i < concursants.size(); i++) {
             String nom = UtilitatsString.formatCadena(concursants.get(i).get(NOM), 15, ' ', 1);
             String cognoms = UtilitatsString.formatCadena(concursants.get(i).get(COGNOMS), 23, ' ', 1);
-            
+
             System.out.println(nom + cognoms);
         }
     }
